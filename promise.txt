@@ -1,0 +1,83 @@
+Basic Questions
+    What is a Promise in JavaScript?
+    =>Promise is a object that represent actual completion or reject of asynchronous task
+    
+    What are the three states of a Promise?
+    =>Three state of promise 1)Pending 2)fulfilled 3)Reject
+
+    How do you create a Promise in JavaScript?    
+    =>To create promise use Promise constructor eg new Promise(function(resolve,reject){})
+    
+    What is the difference between .then() and .catch()?
+    =>Then and Catch use to handle promise then is used to handle successful promise resolution and catch used handle error
+
+    What happens if you call resolve() and reject() both inside a Promise?
+    =>irst one that executes will take effect.
+
+    What is the difference between synchronous and asynchronous code?
+    =>synchronous code will executes line by line where asynchronous code will take time to execute 
+
+    How do you handle errors in Promises?
+    =>Error can be handle in promise with help of catch()
+
+🔸 Intermediate Questions
+    What is Promise chaining? Can you give an example?
+    =>Promise chaining is a technique to handle multiple .then it allow us o hanle operation sequential 
+
+    What is the difference between .then() and async/await?
+    => async/wait is a newer way of handle promise with try catch block
+
+    What happens when a Promise is rejected but there is no .catch()?
+    =>it will throw err
+
+    What is Promise.all()? When would you use it?
+    => promise. all used handle array of promise and return single promise
+        it return result emmediatly with returning the reason for the first rejection.
+
+    How does Promise.allSettled() differ from Promise.all()?
+            Feature                     	Promise.all()	                Promise.allSettled()
+        When does it resolve?	When all promises resolve successfully	    Always resolves after all promises settle (resolve or reject)
+        What happens if a       The entire Promise.all() fails immediately	It does not fail; it collects results of all promises
+        promise rejects?	
+        Returned value	        An array of resolved values (if successful) An array of objects with { status, value } or { status, reason }
+        Use case	            When all promises must succeed	            When you need results of all promises, even if some fail
+
+    What is Promise.race() and how does it work?
+    What is Promise.any()? How is it different from Promise.race()?
+    =>  Use Promise.race() when you want the first result, even if it's an error
+        Use Promise.any() when you only care about the first success and want to ignore failures.
+    
+    What happens if you return a Promise inside a .then()?
+🔹 Advanced Questions
+    How do you convert a callback-based function to a Promise-based function?
+    What are microtasks and how do Promises fit into the event loop?
+    How do you handle multiple API calls efficiently using Promises?
+    What are the advantages of async/await over .then() chaining?
+    How can you implement a retry mechanism using Promises?
+    Can you implement a custom delay function using Promises?
+    What is the difference between a resolved and fulfilled Promise?
+    How do you cancel a Promise?
+    Can a Promise be resolved multiple times? Why or why not?
+    How does Promise.finally() work?
+🔥 Coding Challenges
+Create a function that returns a Promise which resolves after n milliseconds.
+js
+
+    function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+Implement a function that fetches data from an API and handles errors properly.
+js
+
+    async function fetchData(url) {
+        try {
+            let response = await fetch(url);
+            if (!response.ok) throw new Error("Request failed");
+            return await response.json();
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+Implement a retry mechanism for a Promise-based API call.
+Write a function using Promise.all() to fetch data from multiple URLs at once.
+Create a simple polling mechanism using Promises.
