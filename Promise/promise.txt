@@ -49,15 +49,23 @@ Basic Questions
     
     What happens if you return a Promise inside a .then()?
 🔹 Advanced Questions
-    How do you convert a callback-based function to a Promise-based function?
+    How do you convert a callback-based function to a Promise-based function? 
+    ans=> 02
+    
     What are microtasks and how do Promises fit into the event loop?
     How do you handle multiple API calls efficiently using Promises?
     What are the advantages of async/await over .then() chaining?
     How can you implement a retry mechanism using Promises?
     Can you implement a custom delay function using Promises?
     What is the difference between a resolved and fulfilled Promise?
+    =>A resolved promise means it has settled, but it could be either fulfilled or rejected.
+      A fulfilled promise means it has resolved successfully.
+
     How do you cancel a Promise?
+    => Promises cannot be directly canceled once they are initiated
+
     Can a Promise be resolved multiple times? Why or why not?
+    =No, a Promise cannot be resolved multiple times because once a promise is settled (either fulfilled or rejected), its state is immutable and cannot change again.
     How does Promise.finally() work?
 🔥 Coding Challenges
 Create a function that returns a Promise which resolves after n milliseconds.
