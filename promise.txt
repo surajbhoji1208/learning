@@ -1,15 +1,15 @@
 Basic Questions
     What is a Promise in JavaScript?
-    =>Promise is a object that represent actual completion or reject of asynchronous task
+    =>Promise is an object that represent eventual completion or rejection of asynchronous task
     
     What are the three states of a Promise?
-    =>Three state of promise 1)Pending 2)fulfilled 3)Reject
+    =>Three states of promise: 1)Pending, 2)fulfilled 3) rejected
 
     How do you create a Promise in JavaScript?    
     =>To create promise use Promise constructor eg new Promise(function(resolve,reject){})
     
     What is the difference between .then() and .catch()?
-    =>Then and Catch use to handle promise then is used to handle successful promise resolution and catch used handle error
+    =>Then and Catch used to handle promise then is used to handle successful promise resolution and catch used handle error
 
     What happens if you call resolve() and reject() both inside a Promise?
     =>irst one that executes will take effect.
