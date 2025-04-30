@@ -1,0 +1,214 @@
+✅ 1. Angular Basics (10 questions)
+What is Angular and how is it different from AngularJS?
+
+What are components in Angular?
+
+What is the role of NgModule in Angular?
+=>NgModule plays a central role in organizing an application into cohesive blocks of functionality. 
+  It's a decorator that defines a module, which is a container for a group of related components, directives, pipes, and services.
+
+What is the Angular lifecycle hook? Name a few important ones.
+
+How do you bootstrap an Angular application?
+
+What is the difference between @Component, @NgModule, and @Injectable?
+
+What is the difference between BrowserModule and CommonModule?
+
+What is a template in Angular?
+
+How do you use property binding and event binding in Angular?
+
+What are pipes in Angular? How do you create a custom pipe?
+
+✅ 2. Components and Templates (10 questions)
+How do you create a component using Angular CLI?
+
+What are the different ways to pass data to a component?
+
+What is @Input() and @Output() in Angular?
+
+How do you use ng-content and content projection?
+
+What is a smart (container) vs dumb (presentational) component?
+
+What is ViewChild() and ContentChild()? When would you use each?
+
+What is the difference between template reference variable and ViewChild()?
+
+How does the component lifecycle work? Explain ngOnInit, ngOnChanges, ngOnDestroy.
+
+How can you create a dynamic component?
+
+How to style components in Angular (inline, global, scoped styles)?
+
+✅ 3. Directives (8 questions)
+What are directives in Angular?
+
+Difference between structural and attribute directives?
+
+Explain the usage of *ngIf, *ngFor, and *ngSwitch.
+
+How do you create a custom directive?
+
+How does ngClass and ngStyle work?
+
+How do structural directives work behind the scenes?
+
+How would you conditionally apply multiple classes or styles?
+
+Explain the difference between ng-template and ng-container.
+
+✅ 4. Forms (8 questions)
+What is the difference between reactive and template-driven forms?
+
+How do you create and validate reactive forms?
+
+How to implement custom validators in Angular?
+
+What is FormGroup, FormControl, and FormArray?
+
+How to handle nested forms in Angular?
+
+How do you reset or patch values in a reactive form?
+
+How to dynamically add/remove form fields?
+
+How to show form validation errors dynamically?
+
+✅ 5. Services and Dependency Injection (8 questions)
+What is a service in Angular?
+
+What is dependency injection in Angular?
+
+How do you provide a service in a specific module or component?
+
+What is the use of providedIn: 'root'?
+
+How do you share data between components using a service?
+
+How does hierarchical injection work in Angular?
+
+How to make a singleton service?
+
+What are multi providers in Angular?
+
+✅ 6. Routing and Navigation (10 questions)
+How do you configure routes in Angular?
+
+What is the difference between RouterModule.forRoot() and RouterModule.forChild()?
+
+How do you navigate between routes programmatically?
+
+What are route guards? Explain CanActivate, CanDeactivate, etc.
+
+How do you pass route parameters and query parameters?
+
+What is lazy loading and how do you implement it?
+
+What is route resolver and how is it useful?
+
+How can you add a 404 page in Angular?
+
+How do child routes and nested routes work?
+
+How do you enable route reuse in Angular?
+
+✅ 7. Observables & RxJS (10 questions)
+What is an observable and how does it differ from a promise?
+
+How do you subscribe to an observable in Angular?
+
+What are common RxJS operators you've used? (map, switchMap, etc.)
+
+Difference between switchMap, mergeMap, and concatMap?
+
+How do you cancel a subscription in Angular?
+
+What is the async pipe and how does it work?
+
+How do you create a custom observable?
+
+What is Subject and BehaviorSubject?
+
+How do you handle multiple observables together using forkJoin, combineLatest, or zip?
+
+How do you debounce input using RxJS?
+
+✅ 8. HTTP Client and API Integration (7 questions)
+How do you make an HTTP request in Angular?
+
+What is HttpClientModule and how do you import it?
+
+How do you handle error responses in HTTP calls?
+
+What is an HTTP interceptor and how do you create one?
+
+How do you send headers, query params, and body in HTTP requests?
+
+How to handle retrying failed requests?
+
+How do you mock HTTP calls in unit tests?
+
+✅ 9. Unit Testing (7 questions)
+What tools are used for testing in Angular?
+
+How do you test a component with dependencies?
+
+How do you test a service with HttpClient?
+
+What is TestBed in Angular testing?
+
+How do you mock a service in a test?
+
+How do you test form validations?
+
+How do you test route navigation in a component?
+
+✅ 10. Performance Optimization (6 questions)
+What is ChangeDetectionStrategy.OnPush and how does it work?
+
+How does Angular's change detection mechanism work?
+
+How do you optimize large lists in Angular?
+
+How to reduce initial bundle size?
+
+What are best practices to improve Angular performance?
+
+How does lazy loading help performance?
+
+✅ 11. Angular CLI and Build Process (6 questions)
+What is Angular CLI and what are some useful commands?
+
+What is the difference between ng build and ng serve?
+
+What is Ahead-of-Time (AOT) compilation?
+
+How do you build Angular app for production?
+
+How do you add and configure environments in Angular?
+
+How to customize Webpack in Angular (if needed)?
+
+✅ 12. Miscellaneous / Real-world (10 questions)
+How do you secure an Angular app (e.g., JWT, AuthGuard)?
+
+How do you handle role-based access in Angular?
+
+How do you implement internationalization (i18n)?
+
+How do you use Angular Material or Bootstrap in Angular?
+
+Have you worked with any state management library like NgRx, Akita?
+
+How do you structure your Angular application folder-wise?
+
+How do you share common modules and components?
+
+How would you handle file upload in Angular?
+
+How do you deploy an Angular app to production?
+
+What challenges have you faced in Angular projects and how did you overcome them?
+

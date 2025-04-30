@@ -1,0 +1,97 @@
+Basic Level
+What is React.js? How does it work?
+=>React js is javascript library which is developed by meta and it is used to create single page application 
+
+What are the key features of React?
+=>jsx,virtual dom for better performance, react hooks , react routing, these are key features of react 
+
+What is JSX? How is it different from HTML?
+=>Jsx is html like syntax means it allow to write htlm in js,it is optimise for react
+
+What is the Virtual DOM, and how does it improve performance?
+=>virtual dom is a lightweight copy of real dom
+    -React create virtual dom tree(js object) which represent atual dom
+    - when state or prop changes react rerender the dom
+    -react check new virtual dom with previous one with help of diff algorithm 
+    -instead of re-render page react update real dom with only element changes
+
+What are functional and class components?
+=>React has two type of component 
+    1)function 2)class
+    1)functional : it is pure js function has no its own state
+                    react hooks give spacial power to manage state
+                    it is lightweight
+                    it return jsx 
+    2)class component: it is js class that extend component
+                        it uses render method to return jsx
+                        it has its own life cycle method
+
+What is the difference between state and props?
+=>states are special function in react which is help to use control lifecycle of component
+  State is a local, mutable data storage inside a component
+  It allows a component to track and manage its own data.
+  Props are like function args, data are pass to component to component with parent child relation 
+  Props are read-only data passed from a parent component to a child component.
+
+
+What are React Hooks? Can you name a few?
+=>  Allows functional components to use state & lifecycle features
+    Simplifies component logic (No need for class components)
+    Avoids using this (Easier to read & debug)
+    Improves performance by reducing unnecessary re-renders
+
+      1️⃣ useState – For managing state.
+      2️⃣ useEffect – For side effects (API calls, subscriptions).
+      3️⃣ useContext – For avoiding prop drilling.
+      4️⃣ useRef – For accessing DOM elements.
+      5️⃣ useReducer – For complex state management.
+
+What is the difference between useState and useReducer?
+    Both useState and useReducer are React hooks used for state management in functional components. However, useState is best for simple state updates, while useReducer is useful for managing complex state logic."
+    useState is a basic hook that allows components to store and update state directly. It's best for simple state values like numbers, booleans, or strings.
+    useReducer is useful when state logic involves multiple related values or complex updates. Instead of directly updating the state, it uses a reducer function to handle actions and return a new state.
+
+What is the significance of key props in lists?
+
+Intermediate Level
+What is the difference between controlled and uncontrolled components?
+
+What are Higher-Order Components (HOC)?
+
+How does React handle forms and form validation?
+
+What is the Context API? How is it different from Redux?
+
+What is Prop Drilling, and how do you avoid it?
+
+What is the difference between useEffect and componentDidMount?
+
+Explain React's reconciliation process.
+
+What is React Router, and how do you implement dynamic routes?
+
+What is memoization in React? How does React.memo work?
+
+What are custom hooks? Can you give an example?
+
+Advanced Level
+What is the difference between Server-Side Rendering (SSR) and Client-Side Rendering (CSR)?
+
+How does React Fiber improve performance?
+
+What are Suspense and React.lazy?
+
+What is concurrent mode in React?
+
+How do you optimize performance in a React application?
+
+Explain how React works with Webpack and Babel.
+
+What are synthetic events in React?
+
+How does React handle error boundaries?
+
+Explain how reconciliation works with keys in React.
+
+How does React handle accessibility (a11y)?
+
