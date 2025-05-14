@@ -8,10 +8,33 @@ What is the role of NgModule in Angular?
   It's a decorator that defines a module, which is a container for a group of related components, directives, pipes, and services.
 
 What is the Angular lifecycle hook? Name a few important ones.
+  -In Angular, lifecycle hooks are special methods that allow you to tap into key moments in a component's or directive’s lifecycle 
+   Most Commonly Used Hooks
+    ngOnInit() — for initialization logic.
+    ngOnDestroy() — for teardown/cleanup.
+    ngOnChanges() — for responding to input changes.
+    ngAfterViewInit() — for DOM-dependent logic after view init.
 
 How do you bootstrap an Angular application?
+  =>Bootstrapping an Angular application means initializing and loading the root module and component into the browser
+    1. Main Entry Point – main.ts
+      This is the starting point of any Angular app.
 
 What is the difference between @Component, @NgModule, and @Injectable?
+=>In Angular, these are decorators used to define the role of a class:
+    @Component:
+      Marks a class as an Angular component.
+      Controls a piece of UI using a selector, template, and styles.
+      Example: @Component({ selector: 'app-home', templateUrl: 'home.html' })
+    @NgModule:
+      Declares an Angular module that groups components, directives, and services.
+      Handles app structure and configuration.
+      Defines what gets bootstrapped, imported, and exported.
+      Example: @NgModule({ declarations: [...], imports: [...] })
+    @Injectable:
+      Marks a class as injectable, typically for services.
+      Allows Angular's dependency injection system to provide it.
+      Example: @Injectable({ providedIn: 'root' })
 
 What is the difference between BrowserModule and CommonModule?
 
