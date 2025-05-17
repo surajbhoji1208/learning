@@ -37,12 +37,31 @@ What is the difference between @Component, @NgModule, and @Injectable?
       Example: @Injectable({ providedIn: 'root' })
 
 What is the difference between BrowserModule and CommonModule?
+=>-BrowserModule is used only in the root module (typically AppModule) and is required to run the Angular app in the browser. It provides services   
+   essential for rendering and bootstrapping, and it also re-exports CommonModule.
+  -On the other hand, CommonModule is used in feature modules or lazy-loaded modules. It provides common directives like ngIf, ngFor, and ngSwitch, 
+   which are not available by default in those modules.
 
 What is a template in Angular?
+=>In Angular, a template is the HTML that defines the view of a component. It contains the layout and markup, along with Angular-specific syntax 
+  like directives, bindings, and pipes to control how data is displayed and interacted with in the UI.
 
 How do you use property binding and event binding in Angular?
+=>property binding is used to bind data from the component to the view, and event binding is used to respond to user actions in the view.
+  -Property Binding ([property]="expression"):<img [src]="imageUrl">
+  -Event Binding ((event)="handler()"):<button (click)="onClick()">Click Me</button>
 
 What are pipes in Angular? How do you create a custom pipe?
+=> a pipe is a way to transform data before displaying it in the template. Pipes are used with the | symbol and are useful for things like 
+   formatting dates, numbers, strings, etc.
+    @Pipe({ name: 'capitalize' })
+    export class CapitalizePipe implements PipeTransform {
+      transform(value: string): string {
+        if (!value) return '';
+        return value[0].toUpperCase() + value.slice(1).toLowerCase();
+      }
+    }
+
 
 ✅ 2. Components and Templates (10 questions)
 How do you create a component using Angular CLI?
