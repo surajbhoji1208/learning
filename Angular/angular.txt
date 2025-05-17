@@ -141,14 +141,34 @@ What is a smart (container) vs dumb (presentational) component?
 
 
 What is ViewChild() and ContentChild()? When would you use each?
+=>
+    🔹 @ViewChild()
+      -Used to get a reference to a child element, component, or directive that is part of the same component's template 
+      -You use this when you need to call methods or access properties of a child component or DOM element declared in your template.
+      <!-- app.component.html -->
+      <app-child #childRef></app-child>'
+      <!-- app.component.ts -->
+      @ViewChild('childRef') childComponent: ChildComponent;
+  🔹 @ContentChild()
+    -Used to access projected content passed from a parent into a child component using <ng-content>.
+    -This is useful when you're building reusable components and want to interact with content projected via ng-content.
+    <!-- Parent component -->
+    <app-card>
+      <p #projectedContent>This is content from parent</p>
+    </app-card>
+    // app-card.component.ts
+    @ContentChild('projectedContent') content: ElementRef;
 
 What is the difference between template reference variable and ViewChild()?
-
-How does the component lifecycle work? Explain ngOnInit, ngOnChanges, ngOnDestroy.
+Feature	                  Template Ref Variable      	@ViewChild()
+Defined in  	            HTML template	            TypeScript class
+Accessiblein	            Template only            	Component class (TS)
+Lifecycle availability	  Immediately	              After ngAfterViewInit()
+Use case	                Simple access (e.g., values)	Complex access (methods, properties)
 
 How can you create a dynamic component?
-
-How to style components in Angular (inline, global, scoped styles)?
+=>In Angular, you can create a dynamic component at runtime using the ViewContainerRef and ComponentFactoryResolver or with the newer 
+  createComponent() API. This is useful when you want to render components based on user input, configurations, or conditions.
 
 ✅ 3. Directives (8 questions)
 What are directives in Angular?
