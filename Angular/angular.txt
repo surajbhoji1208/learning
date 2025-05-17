@@ -86,20 +86,29 @@ How to style components in Angular (inline, global, scoped styles)?
 
 ✅ 3. Directives (8 questions)
 What are directives in Angular?
+=> directives are special classes that add behavior or modify the structure of elements in the DOM. They are used to extend HTML with custom logic.
+
+          🔹 Types of Directives:
+          Component
+          Technically a directive with a template.
+          Example: @Component({...})
+          
+          Structural Directives
+          Change the layout of the DOM by adding or removing elements.
+          Prefix: usually *
+          Examples: *ngIf, *ngFor, *ngSwitch
+          
+          Attribute Directives
+          Change the appearance or behavior of an existing element.
+          Applied like regular attributes.
+          Example: ngClass, ngStyle, or custom directives
 
 Difference between structural and attribute directives?
 
 Explain the usage of *ngIf, *ngFor, and *ngSwitch.
 
 How do you create a custom directive?
-
-How does ngClass and ngStyle work?
-
-How do structural directives work behind the scenes?
-
-How would you conditionally apply multiple classes or styles?
-
-Explain the difference between ng-template and ng-container.
+=>ng generate directive highlight
 
 ✅ 4. Forms (8 questions)
 What is the difference between reactive and template-driven forms?
