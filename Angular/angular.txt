@@ -65,14 +65,80 @@ What are pipes in Angular? How do you create a custom pipe?
 
 ✅ 2. Components and Templates (10 questions)
 How do you create a component using Angular CLI?
+=>ng g c name
 
 What are the different ways to pass data to a component?
+                  =>🔹 1. @Input() — Parent to Child Component
+                          Used to pass data from a parent component to a child using property binding.
+                          
+                          Parent Template:
+                          <app-child [message]="parentMessage"></app-child>
+                          @Input() message: string;
+                   🔹 2. @Output() — Child to Parent Communication
+                          Used to send data from child to parent via EventEmitter.
+                          
+                          Child Component:
+                          @Output() notify = new EventEmitter<string>();
+                          
+                          someMethod() {
+                            this.notify.emit('Data from child');
+                          }
+                          Parent Template:
+                  <app-child (notify)="handleNotify($event)"></app-child>
+                  🔹 3. Service with Observable/Subject
+                          Used to share data between unrelated components (e.g., siblings or across the app) via a shared service.
+                          
+                          @Injectable({ providedIn: 'root' })
+                          export class DataService {
+                            private data = new BehaviorSubject<string>('initial');
+                            currentData = this.data.asObservable();
+                          
+                            updateData(newValue: string) {
+                              this.data.next(newValue);
+                            }
+                          }
+                          Components can subscribe to currentData and get updates.
+                          
+                  🔹 4. Router Parameters / Query Params
+                              Data passed through Angular routing.
+                              
+                              // Route config
+                              { path: 'user/:id', component: UserComponent }
+                              
+                              // Accessing in component
+                              this.route.snapshot.params['id'];
+                  🔹 5. Template Reference Variables
+                            Passing a DOM element or component reference using #ref.
+                            
+                            <input #myInput>
+                            <app-child [inputElement]="myInput"></app-child>
 
 What is @Input() and @Output() in Angular?
 
 How do you use ng-content and content projection?
+=>which means inserting content from a parent component into a child component's template
+        Parent Component:
+          <app-card>
+            <p>This is projected content!</p>
+          </app-card>
+        Child Component (app-card):
+          <div class="card">
+            <ng-content></ng-content>
+          </div>
 
 What is a smart (container) vs dumb (presentational) component?
+=>🔹 Smart (Container) Component:
+      Handles business logic, data fetching, and state management
+      Knows how to get the data
+      Passes data to child (dumb) components via @Input()
+      Handles events from child components via @Output()
+      Typically connected to services, API calls, or the store
+  🔹 Dumb (Presentational) Component:
+      Only responsible for displaying data (UI)
+      Gets data via @Input() and emits events via @Output()
+      Doesn’t know where the data comes from
+      Easier to test and reuse
+
 
 What is ViewChild() and ContentChild()? When would you use each?
 
