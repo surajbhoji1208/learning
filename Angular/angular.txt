@@ -198,10 +198,52 @@ How do you create a custom directive?
 
 ✅ 4. Forms (8 questions)
 What is the difference between reactive and template-driven forms?
+=>
+  🔹 1. Template-Driven Forms
+  Form logic is written in the template using directives like ngModel.
+      -Suitable for simple forms 
+      -Uses two-way data binding      
+      -Less code in the TypeScript file      
+      -Asynchronous and declarative      
+      -Requires FormsModule      
+        Example:
+        <form #form="ngForm">
+          <input name="email" ngModel required>
+        </form>
+  🔹 2. Reactive Forms
+  Form is defined in the TypeScript class, offering more control and predictability.
+  Suitable for complex and dynamic forms
+  Uses explicit form models (FormGroup, FormControl, FormArray)
+  More scalable, testable, and synchronous
+  Requires ReactiveFormsModule
+
+    Example:
+    form = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email])
+    });
+    <form [formGroup]="form">
+      <input formControlName="email">
+    </form>
+
 
 How do you create and validate reactive forms?
+=> you can create and validate Reactive Forms using FormGroup, FormControl, and built-in or custom validators from @angular/forms.
+🔹 1. Import ReactiveFormsModule
+🔹 2. Create the Form in Component Class
+🔹 3. Bind the Form in the Template
+
 
 How to implement custom validators in Angular?
+=>Basic Custom Validator (Function)
+    ✅ Example: Disallow spaces in a username
+    import { AbstractControl, ValidationErrors } from '@angular/forms';
+    
+    export function noSpaces(control: AbstractControl): ValidationErrors | null {
+      const hasSpace = (control.value || '').includes(' ');
+      return hasSpace ? { noSpaces: true } : null;
+    }
+    ✅ Use in Component:
+    username = new FormControl('', [noSpaces]);
 
 What is FormGroup, FormControl, and FormArray?
 
@@ -287,20 +329,6 @@ How to handle retrying failed requests?
 
 How do you mock HTTP calls in unit tests?
 
-✅ 9. Unit Testing (7 questions)
-What tools are used for testing in Angular?
-
-How do you test a component with dependencies?
-
-How do you test a service with HttpClient?
-
-What is TestBed in Angular testing?
-
-How do you mock a service in a test?
-
-How do you test form validations?
-
-How do you test route navigation in a component?
 
 ✅ 10. Performance Optimization (6 questions)
 What is ChangeDetectionStrategy.OnPush and how does it work?
