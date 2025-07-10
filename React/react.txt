@@ -6,14 +6,21 @@ What are the key features of React?
 =>jsx,virtual dom for better performance, react hooks , react routing, these are key features of react 
 
 What is JSX? How is it different from HTML?
-=>Jsx is html like syntax means it allow to write htlm in js,it is optimise for react
+=>JSX stands for JavaScript XML. It’s a syntax extension for JavaScript that lets us write HTML-like code directly inside JavaScript files. 
+  It’s most commonly used in React to define how the UI should look.
+  Transpiled by Babel”
+  “Improves readability and maintainability”
+  “Supports JS expressions inside {}”
 
 What is the Virtual DOM, and how does it improve performance?
-=>virtual dom is a lightweight copy of real dom
-    -React create virtual dom tree(js object) which represent atual dom
-    - when state or prop changes react rerender the dom
-    -react check new virtual dom with previous one with help of diff algorithm 
-    -instead of re-render page react update real dom with only element changes
+=>The Virtual DOM is a lightweight, in-memory representation of the actual DOM.
+ In React, instead of manipulating the real DOM directly every time there’s a change, React creates a copy of the DOM in memory — that’s the Virtual DOM.
+  When the app’s state changes, React updates this Virtual DOM first. Then,
+  it compares the new Virtual DOM with the previous one using a process called diffing. Based on the differences, React calculates the most efficient way to update the real DOM.
+   This makes UI updates faster and more efficient because it reduces expensive direct DOM manipulations.
+  This approach improves performance because working with the real DOM is slow compared to working with objects in memory. 
+  By batching changes and minimizing direct updates, React delivers a smoother, more responsive UI.”**
+
 
 What are functional and class components?
 =>React has two type of component 
@@ -52,6 +59,10 @@ What is the difference between useState and useReducer?
     useReducer is useful when state logic involves multiple related values or complex updates. Instead of directly updating the state, it uses a reducer function to handle actions and return a new state.
 
 What is the significance of key props in lists?
+=> Keys help React minimize DOM operations. If a list changes, React can match the old and new elements using the key, 
+   so it only updates what’s necessary instead of re-rendering the whole list
+   Good keys: Unique and stable. Usually an ID from your data (id or uuid).
+   Bad keys: Using an index (key={index}) is not ideal because the index can change if you add, remove, or reorder items. That can break the mapping.
 
 Intermediate Level
 What is the difference between controlled and uncontrolled components?
