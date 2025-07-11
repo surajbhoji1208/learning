@@ -66,16 +66,42 @@ What is the significance of key props in lists?
 
 Intermediate Level
 What is the difference between controlled and uncontrolled components?
+=>      ➡️ Controlled Component
+        In a controlled component, React controls the form element’s value.
+        The value is bound to React state.
+        When the user types, an onChange handler updates the state, which updates the input’s value.
+        ➡️ Uncontrolled Component
+        In an uncontrolled component, the DOM itself keeps track of the value.
+        React does not directly manage the input’s current value.
+        You use a ref to read the value when needed.
 
 What are Higher-Order Components (HOC)?
+=>Higher order component is react pattern which accept component as args and return new component with new props or new feature
+  it do not modify original component directly
 
 How does React handle forms and form validation?
+=>controlled and uncontrolled Explain
 
 What is the Context API? How is it different from Redux?
+=>It build in react feature to share data globally without having to pass props manually at every Level
+  Used to avoid prop drilling
+  It is good for simple global state
+  used to share data globally like: User auth status, theme(light/dark)
+  Redux: its a external library
+         good for complex management 
+         provide way to update,debug globally
 
 What is Prop Drilling, and how do you avoid it?
+=>Prop Drilling happens when you have to pass data through multiple layers of components,
+  even if intermediate components don’t care about that data — they’re just passing it down.
 
 What is the difference between useEffect and componentDidMount?
+=>componentDidMount is a lifecycle method in class-based components.
+  It runs once, after the component is rendered to the DOM.
+  Typical use: fetch data, set up subscriptions, run side effects that should only happen once.
+  useEffect is a Hook in function components.
+  It can mimic multiple lifecycle behaviors, including:componentDidMount,componentDidUpdate,componentWillUnmount
+
 
 Explain React's reconciliation process.
 
@@ -84,6 +110,14 @@ What is React Router, and how do you implement dynamic routes?
 What is memoization in React? How does React.memo work?
 
 What are custom hooks? Can you give an example?
+
+why we always have to write supper(props) in class based component while receiving props
+=>In class based component we extends React.Component class
+  so before use props we have to define props 
+  it is going to define in parent class component
+  for that we have to call parent class component constructor
+  for that we have to call supper(props) inside class constructor
+  Then with the help of this.props we can use props 
 
 Advanced Level
 What is the difference between Server-Side Rendering (SSR) and Client-Side Rendering (CSR)?
