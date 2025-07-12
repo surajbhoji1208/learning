@@ -104,10 +104,41 @@ What is the difference between useEffect and componentDidMount?
 
 
 Explain React's reconciliation process.
+=>React's reconciliation process is the algorithm it uses to update the DOM efficiently when the state or props of a component change.
+  Instead of re-rendering the whole UI from scratch, React uses a virtual DOM to track changes. When something changes:
+  React creates a new virtual DOM tree.
+  It compares this new tree with the previous one using a process called diffing.
+  Based on the difference, it calculates the minimal number of changes required.
+  React then updates only those parts of the real DOM that have changed.
 
 What is React Router, and how do you implement dynamic routes?
+=>React Router is a standard routing library for React. It enables navigation between different views or pages in a React application without          reloading the page, by managing the URL and rendering the appropriate components.
+  It provides components like <BrowserRouter>, <Routes>, <Route>, and hooks like useNavigate and useParams to handle navigation and access route-      related data.
+Dynamic Routes:
+                    Dynamic routes are used when the path includes a variable segment, such as a user ID or product ID.
+                    
+                    Example:
+                    <Route path="/user/:id" element={<UserProfile />} />
+                    Here, :id is a dynamic segment.
+                    
+                    🧠 How to Access Dynamic Route Params:
+                    Inside the UserProfile component, you can access the id using the useParams() hook:
+                    
+                    import { useParams } from 'react-router-dom';
+                    
+                    function UserProfile() {
+                      const { id } = useParams();
+                      return <h2>User ID: {id}</h2>;
+                    }
+                    This will display User ID: 123 if the user visits /user/123.
 
 What is memoization in React? How does React.memo work?
+=>Memoization in React is an optimization technique used to avoid unnecessary re-renders of components by caching the result of a component or         function based on its inputs (props).
+  React.memo is a Higher-Order Component (HOC) that allows functional components to skip re-rendering if their props haven't changed.
+  It works like this:                  
+                      const MemoizedComponent = React.memo(MyComponent);
+                      Now, MyComponent will only re-render if its props change — based on a shallow comparison.
+
 
 What are custom hooks? Can you give an example?
 
