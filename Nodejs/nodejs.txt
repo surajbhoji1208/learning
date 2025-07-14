@@ -1,0 +1,365 @@
+1. Core Node.js Concepts
+What is Node.js? How is it different from traditional web servers?
+=>Node js is js runtime
+
+Explain the event-driven architecture of Node.js.
+=>explain event loop with setimeout , explain with routing
+
+What is the difference between synchronous and asynchronous code?
+=>refer notes
+
+What are the advantages of using Node.js?
+
+What is the Node.js event loop and how does it work?
+=note
+
+What are callbacks, and what is callback hell?
+=>promise.txt
+
+What are Promises and how are they better than callbacks?
+=>promise
+
+Explain async/await in Node.js with an example.
+=>promise
+
+How does Node.js handle concurrency with a single-threaded model?
+=>rerer notes
+
+🔹 2. Modules and Packages
+What is the difference between CommonJS and ES Modules?
+=>notes
+
+What are built-in modules in Node.js? Name a few commonly used ones.
+=>note
+
+How do you create a custom module?
+=>note
+
+What is the use of the require function?
+=Note
+
+How do you export and import modules?
+=>note
+
+What is package.json and what information does it hold?
+
+What are dependencies, devDependencies, and peerDependencies?
+
+🔹 3. NPM (Node Package Manager)
+How do you install packages locally vs globally?
+
+What is the difference between npm install and npm ci?
+
+How do you update, uninstall, or audit npm packages?
+
+What is semantic versioning (^, ~, *) in package.json?
+
+🔹 4. File System and Streams
+How do you read and write files in Node.js?
+=>In Node.js, reading and writing files is commonly done using the built-in fs (File System) module
+    ✅ Asynchronous (Non-blocking) - Preferred
+            fs.readFile('example.txt', 'utf8', (err, data) => {
+            if (err) {
+                console.error('Error reading file:', err);
+                return;
+            }
+            console.log('File content:', data);
+            });
+
+    ✅ Synchronous (Blocking)
+
+            try {
+            const data = fs.readFileSync('example.txt', 'utf8');
+            console.log('File content:', data);
+            } catch (err) {
+            console.error('Error reading file:', err);
+            }
+
+What are the differences between fs.readFile() and fs.readFileSync()?
+=>1. Synchronous (Sync)
+    Blocks the execution of further code until the file operation completes.
+    Slower for large files or heavy tasks.
+    Use it only when you must wait before continuing.
+ 2. Asynchronous (Async)
+    Non-blocking — code doesn’t wait for the file operation to complete.
+    A callback function (or Promise) handles the result when it's ready.
+    Preferred in most real-world apps for better performance.
+
+
+
+What are streams in Node.js? Explain different types.
+
+How do you create and consume a readable/writable stream?
+
+🔹 5. HTTP & Web Servers
+How do you create an HTTP server in Node.js?
+
+What are request and response objects?
+
+How do you handle routing in a basic Node.js server?
+
+What are the different HTTP methods, and how are they handled?
+
+🔹 6. Express.js Framework
+What is Express.js? Why do we use it?
+
+How do you create a basic route using Express?
+
+What is middleware in Express? Types and usage?
+
+How do you handle errors in Express?
+
+What is the difference between app.use() and app.get()?
+
+How do you use route parameters and query strings?
+
+What is express.Router() and why is it useful?
+
+🔹 7. Error Handling & Debugging
+How do you handle errors in Node.js and Express?
+
+What is the use of try/catch with async/await?
+
+How do you use the debug module?
+
+What are common Node.js exceptions and how do you handle them?
+
+🔹 8. Middleware & Request Lifecycle
+What is the request-response lifecycle in Express?
+
+What are third-party middleware like morgan, cors, and body-parser?
+
+How do you write custom middleware?
+
+🔹 9. Databases Integration
+How do you connect Node.js with a database (PostgreSQL, MongoDB, MySQL)?
+
+What is the difference between ORM and ODM?
+
+How do you perform CRUD operations in Node.js using a database?
+
+What is the use of mongoose (for MongoDB) or sequelize/typeorm (for SQL DBs)?
+
+🔹 10. Authentication & Security
+How do you implement authentication in Node.js (JWT or session-based)?
+
+What is the difference between authentication and authorization?
+
+How do you protect routes using middleware?
+
+What are common security issues in Node.js (e.g., SQL injection, XSS) and how to prevent them?
+
+What is CORS and how do you handle it in Express?
+
+🔹 11. Performance & Best Practices
+How do you handle large requests or file uploads?
+
+What is clustering in Node.js?
+
+How do you improve performance in a Node.js app?
+
+What is load balancing and how is it handled?
+
+How do you prevent memory leaks?
+
+🔹 12. Testing
+How do you write unit tests for Node.js?
+
+What tools are commonly used (Mocha, Chai, Jest)?
+
+How do you mock dependencies in tests?
+
+🔹 13. Deployment & DevOps Basics
+How do you deploy a Node.js app?
+
+What are .env files and why are they used?
+
+How do you set environment variables?
+
+What is PM2 and how is it used in production?
+
+How do you log errors in production?
+
+🔹 14. Advanced Topics
+Explain process.nextTick(), setImmediate(), and setTimeout().
+
+What is the role of the event loop phases (timers, I/O callbacks, etc.)?
+
+What is the difference between microtasks and macrotasks?
+
+Explain child processes and worker threads in Node.js.
+
+What is buffer and how is it used?
+
+✅ Bonus: Real-World Scenarios
+Design a REST API using Node.js and Express.
+
+How do you handle file uploads (e.g., with multer)?
+
+How do you send emails using Node.js?
+
+How do you schedule jobs (e.g., with node-cron)?
+
+Would you like a PDF version or a mock interview setup based on these topics next?
+
+
+
+
+
+
+
+
+
+Ask ChatGPT
+You said:
+ 
+PS D:\Learning> git clone https://github.com/surajbhoji1208/learning.git
+git : The term 'git' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or 
+if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ git clone https://github.com/surajbhoji1208/learning.git
++ ~~~
+    + CategoryInfo          : ObjectNotFound: (git:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+
+ChatGPT said:
+The error message:
+
+csharp
+Copy
+Edit
+git : The term 'git' is not recognized as the name of a cmdlet...
+means that Git is not installed on your system, or it’s not added to your system's PATH.
+
+✅ Solution Steps:
+Step 1: Check if Git is Installed
+Open a new Command Prompt or PowerShell window.
+
+Type:
+
+css
+Copy
+Edit
+git --version
+If it says something like:
+git is not recognized as an internal or external command...
+
+then Git is not installed.
+
+🔧 Step 2: Install Git for Windows
+Go to the official Git website:
+👉 https://git-scm.com/download/win
+
+Download the Git installer and run it.
+
+In the setup:
+
+Use recommended options unless you know what you're changing.
+
+Make sure the option "Git from the command line and also from 3rd-party software" is selected.
+
+🔁 Step 3: Restart Terminal & Try Again
+After installation:
+
+Restart PowerShell or Command Prompt.
+
+Try:
+
+bash
+Copy
+Edit
+git --version
+You should now see the installed Git version.
+
+Then retry your clone:
+
+bash
+Copy
+Edit
+git clone https://github.com/surajbhoji1208/learning.git
+Let me know if you want help setting up SSH access, GitHub authentication, or Git commands basics.
+
+
+
+
+
+
+
+
+You said:
+install it globally
+
+
+ChatGPT said:
+To install Git globally on Windows, follow these steps — this ensures Git can be used from any terminal (PowerShell, CMD, or Git Bash):
+
+✅ Step-by-Step: Install Git Globally on Windows
+1. Download Git Installer
+🔗 Go to the official Git site:
+👉 https://git-scm.com/download/win
+
+The download will start automatically.
+
+2. Run the Installer
+Double-click the downloaded .exe file (e.g., Git-2.x.x-64-bit.exe).
+
+Follow the setup wizard.
+
+👉 Important Options to Select During Installation:
+
+Adjusting your PATH environment → ✅ Choose:
+
+pgsql
+Copy
+Edit
+Git from the command line and also from 3rd-party software
+This adds Git globally to your system PATH.
+
+Leave other options as default unless you have specific preferences.
+
+3. Complete Installation
+Click through the installer and finish.
+
+It will install Git globally on your system.
+
+4. Verify Git Installation
+After installation, open a new PowerShell or CMD, then run:
+
+bash
+Copy
+Edit
+git --version
+✅ You should see output like:
+
+nginx
+Copy
+Edit
+git version 2.43.0.windows.1
+✅ You're Done!
+You can now use Git from:
+
+PowerShell
+
+CMD
+
+Git Bash
+
+Any terminal or IDE (like VS Code)
+
+Let me know if you want help setting up:
+
+GitHub authentication (HTTPS or SSH)
+
+Git config (name & email)
+
+Git command cheatsheet for daily use
+
+
+
+
+
+
+
+
+
