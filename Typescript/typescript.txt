@@ -1,0 +1,77 @@
+
+
+🚀 1️⃣ Basics & Fundamentals
+What is TypeScript? Why use it over JavaScript?
+ANS:    TypeScript is an open-source programming language developed and maintained by Microsoft.
+        It’s a superset of JavaScript, which means any valid JavaScript code is also valid TypeScript code.
+        TypeScript adds static typing and advanced type-checking features to JavaScript.
+        It needs to be transpiled (compiled) to plain JavaScript because browsers don’t understand TypeScript natively.
+
+What are the main benefits of TypeScript?
+ANS:    Catches errors early with static typing.
+        Better IDE support (autocomplete, hints).
+        Easier to scale large projects.
+        Uses modern JS features safely.
+        Can be adopted gradually with existing JS.
+
+How does TypeScript transpile to JavaScript?
+ANS:    TypeScript uses its compiler (tsc) to check types and then transforms (transpiles) the .ts files into plain JavaScript files (.js) that browsers and Node.js can run.
+        The compiler removes all type annotations because JavaScript doesn’t understand types, and outputs clean JS code based on your tsconfig.json settings (like ES5, ES6).
+
+What are .ts and .d.ts files?
+ANS:    .ts is Regular TypeScript source files.
+        They contain your actual TypeScript code — classes, interfaces, functions, types, etc.
+        .d.ts is Type declaration files 
+        They only contain type information (no runtime code). They describe the shape of existing JavaScript code or libraries so TypeScript knows about the types.
+
+How do you run a TypeScript project?
+
+🚀 2️⃣ Types & Type System
+What is static typing?
+ANS:   Static typing is a programming language feature where the type of a variable is known and checked at compile time, before the code runs.
+
+
+What is any type? When would you use it?
+ANS: The any type is a special type in TypeScript that turns off type checking for that value.
+
+What is unknown? How is it different from any?
+
+What is void?
+
+What is never? When does a function return never?
+
+What are literal types? Example?
+
+What are union and intersection types? Give examples.
+
+What is type inference?
+
+What is type assertion (aka casting)? Syntax for it?
+
+What is type narrowing? How does TS help narrow types?
+
+🚀 3️⃣ Functions, Interfaces & Classes
+How do you define a function with typed parameters and return type?
+
+What are optional parameters?
+
+What is a default parameter?
+
+What is the difference between interface and type?
+
+How do you extend interfaces?
+
+How do you merge interfaces?
+
+What is readonly property?
+
+How do you implement a class with an interface?
+
+How does public, private, protected work in TS classes?
+
+What is abstract class?
+
+What are accessors (get / set)?
+
+How do you create static properties/methods in TS?
+
