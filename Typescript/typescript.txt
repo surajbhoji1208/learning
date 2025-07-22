@@ -35,43 +35,130 @@ What is any type? When would you use it?
 ANS: The any type is a special type in TypeScript that turns off type checking for that value.
 
 What is unknown? How is it different from any?
+ANS:  This value could be anything, but I don’t trust it yet — you must check its type before you use it.”
+      You can assign anything to an unknown variable.
+      But you can’t use it directly without type-checking or type assertions.
 
 What is void?
+ANS:  void is a TypeScript keyword and return type that means “this function does not return any useful value.”
 
 What is never? When does a function return never?
+ANS:    This function can’t finish normally.
+        never is a special type that means “this value should never happen.”
+        A function that returns never never actually returns — it either throws an error or loops forever.
 
-What are literal types? Example?
 
-What are union and intersection types? Give examples.
-
-What is type inference?
 
 What is type assertion (aka casting)? Syntax for it?
+ANS:    It does not change the runtime value — it only tells the compiler to treat a value as a more specific type.
 
-What is type narrowing? How does TS help narrow types?
 
 🚀 3️⃣ Functions, Interfaces & Classes
 How do you define a function with typed parameters and return type?
+ANS: function add(a: number, b: number): number {
+        return a + b;
+        }
 
 What are optional parameters?
+ANS: Optional parameters mean you don’t have to provide a value for that parameter when calling the function.
+        function greet(name?: string) {
+         console.log(`Hello, ${name}`);
+        }
 
 What is a default parameter?
+ANS: A default parameter means if you don’t provide a value, the function uses the default value you defined.
+                function greet(name: string = "Guest") {
+                console.log(`Hello, ${name}`);
+                }
 
 What is the difference between interface and type?
+ANS:  Both interface and type can describe the shape of an object
+                                        // Using interface
+                                interface User {
+                                        name: string;
+                                        age: number;
+                                        }
+
+                                        // Using type
+                                type User = {
+                                        name: string;
+                                        age: number;
+                                        };
+        interface is extendable:
+                You can extend an interface.
+                You can declare the same interface multiple times — TS merges them!
+        type is not mergeable:
+                type aliases are single declarations. You can’t declare the same type twice.
+                But you can compose types using & (intersection).
+
 
 How do you extend interfaces?
+                interface Person {
+                        name: string;
+                        age: number;
+                        }
+
+                interface Employee extends Person {
+                        employeeId: number;
+                        }
+
+                const emp: Employee = {
+                        name: "Alice",
+                        age: 30,
+                        employeeId: 123
+                        };
+
 
 How do you merge interfaces?
+        interface User {
+                name: string;
+                }
+
+        interface User {
+                age: number;
+                }
+
+        const user: User = {
+                name: "Bob",
+                age: 42
+                };
+
 
 What is readonly property?
+ANS: This property can be set once (when the object is created) but cannot be reassigned later.
 
 How do you implement a class with an interface?
+ANS:  -Class get extends and interface get implement
+      -interface get extends with interface  
+
+                interface Animal {
+                        name: string;
+                        makeSound(): void;
+                        }
+
+                class Dog implements Animal {
+                        name: string;
+
+                        constructor(name: string) {
+                        this.name = name;
+                        }
+
+                makeSound() {
+                         console.log("Woof!");
+                        }
+                        }
+
 
 How does public, private, protected work in TS classes?
+ANS:    public — accessible anywhere.
+        private — accessible only inside the same class.
+        protected — accessible inside the same class and subclasses.
 
 What is abstract class?
 
 What are accessors (get / set)?
 
 How do you create static properties/methods in TS?
+ANS:    You access it on the class, not on an object created from the class.
+        It’s shared by all instances — there’s only one copy.
 
