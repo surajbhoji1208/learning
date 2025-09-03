@@ -1,0 +1,48 @@
+"Hi, my name is Suraj Bhoji. I completed my Bachelor of Technology in Information Technology
+ from Dr. J.J. Magdum College of Engineering in 2022 with a GPA of 8.0. Currently, 
+ I am working as a Software Engineer at OneClick IT Consultancy Pvt Ltd in Ahmedabad,
+  where I have around two years of experience in full-stack development.
+My technical expertise includes Angular, React.js, Node.js, NestJS, PostgreSQL, and Java. 
+I have been involved in both frontend and backend projects database schema planning, API development, and performance optimization.
+For example, in one of my key projects, Elite Opinio, I migrated an Angular application from v11 to v15,
+ optimized page speed by 30% using lazy loading and AOT compilation,
+  and developed a reporting module with Bull Queues for large dataset processing.
+   On the backend, I optimized PostgreSQL queries and indexing, reducing response time by 30%.
+I also worked on a React-based project called Opinio Volt, where I designed the overall project architecture, 
+built reusable components, managed state using Redux, and implemented React Router with lazy loading for code-splitting.
+ I deployed the application on Vercel and ensured responsiveness across all pages, including About, Careers, 
+ and Login/Logout flows.
+In addition to development, I have participated in Agile ceremonies, client communication,
+ and conducted technical interviews for Node.js and Angular roles. I enjoy building scalable,
+  user-centric solutions and continuously work on improving my skills in both frontend and backend development.
+
+
+
+
+  2)switch
+  In my current role, I’ve worked on end-to-end development, optimized applications, and even contributed to technical hiring.
+   I’m now looking for a role where I can further enhance my skills, especially in advanced React, Node.js, and cloud-based architectures.
+   I see this opportunity as a way to continue learning while also adding value with my current experience
+
+   3)Yes, I did receive my appraisal in April, and I’m grateful to my current company for recognizing my contributions. 
+   However, for me, career growth is not only about salary but also about the kind of projects, technologies, 
+   and responsibilities I get to work on. That’s why I’m exploring opportunities where I can challenge myself more,
+    enhance my skills, and contribute at a larger scale
+    — and I feel this role aligns well with those goals.
+
+
+
+    4)project
+    surveying platform where our application acts as middleware between clients and vendors. 
+    For example, when a client wants to run a survey but doesn’t have enough users to complete it,
+     we connect them with vendors who already have a large user base. We integrated tier-one companies into our panel
+      to ensure reliable vendor support.
+Here’s how it works: the client registers in our panel with survey details, 
+and our system automatically assigns the survey to suitable vendors based on client requirements. 
+Vendors then provide users to complete those surveys. On average, our platform handles 1 to 2 lakh users per day, 
+so we needed to ensure high performance and almost zero downtime —
+ because even a little downtime could cause significant loss for the client.
+To achieve this, I worked on optimizing APIs, PostgreSQL queries, and backend processes,
+ and implemented features like Bull Queues for background processing and cron jobs for scheduled updates. 
+ We also ensured smooth communication between frontend and backend using Angular/React and Node.js.
+  The focus was always on scalability, reliability, and performance, which helped us manage the heavy traffic efficiently.
