@@ -206,3 +206,27 @@ Explain how reconciliation works with keys in React.
 
 How does React handle accessibility (a11y)?
 
+
+**********************************YOUTUBE***************************************
+create app 
+  -npm create vite@latest app-name -- --template react
+Add tailwind 
+  -npm install -D tailwindcss postcss autoprefixer
+  -build tailwind.css
+    -npx tailwindcss init
+      inside config files
+        1)content: include what file it should track
+      -now add those 3 thing inside app.css
+        1)@tailwind base 2)@tailwind component 3)tailwind utilities 
+
+Project structure
+  -Head
+   Body
+    Sidebar
+      MenuItem
+    MainContainer
+      ButtonsList
+        Button
+      VideoContainer
+        VideoCard
+

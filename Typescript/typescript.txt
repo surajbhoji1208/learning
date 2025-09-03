@@ -162,3 +162,19 @@ How do you create static properties/methods in TS?
 ANS:    You access it on the class, not on an object created from the class.
         It’s shared by all instances — there’s only one copy.
 
+ What is Pick and Omit?
+ ANS: 
+        interface User {
+                id: number;
+                name: string;
+                email: string;
+                isAdmin: boolean;
+        }
+        Pick: creates a new type by picking only the specified keys from the original type.
+                type UserPreview = Pick<User, 'id' | 'name'>;
+        Omit: creates a new type by removing the specified keys from the original type.
+                type PublicUser = Omit<User, 'email' | 'isAdmin'>;
+
+How does enum work?
+ANS : is a special TypeScript feature that lets you define a set of named constants 
+
