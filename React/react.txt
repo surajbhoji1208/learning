@@ -152,13 +152,48 @@ why we always have to write supper(props) in class based component while receivi
 
 Advanced Level
 What is the difference between Server-Side Rendering (SSR) and Client-Side Rendering (CSR)?
+=> In CSR, the browser (client) downloads a minimal HTML page, then runs JavaScript to render the content dynamically.
+      How it works:
+        User requests a web page.
+        Server responds with a basic HTML + JavaScript bundle.
+        Browser runs JavaScript (usually React, Angular, etc.) to build the UI.
+        Content is shown after JS is executed
+   In SSR, the server renders the full HTML content of the page and sends it to the browser, which just displays it.
+      How it works:
+        User requests a web page.
+        Server processes the request and sends fully rendered HTML.
+        Browser displays content immediately.
+        JavaScript hydrates the page to make it interactive.
 
 How does React Fiber improve performance?
+=>React Fiber is a complete rewrite of the React core algorithm introduced in React 16. It was designed to improve performance, especially for complex UI rendering, animation, and responsive interactions.
+  1. Incremental Rendering
+      Old React: Rendering was synchronous and blocking — once it started rendering, it had to finish.
+      Fiber: Breaks rendering into small units of work (called "fibers") that can be paused and resumed
+  2. Prioritized Updates
+      Fiber assigns priority levels to updates (e.g., animation > data fetch).
+      Important updates (like typing or clicking) can interrupt low-priority work.
+  3. Concurrency Support
+      React Fiber is designed for concurrent rendering, a foundation for features like useTransition, 
+      startTransition, and React Concurrent Mode.
+  4. Improved Scheduling
+      Fiber uses a cooperative scheduling model.
+      It can yield control back to the browser to handle higher-priority tasks like animations or user input.
 
-What are Suspense and React.lazy?
+
+
 
 What is concurrent mode in React?
-
+=>-Concurrent Mode is an optional advanced feature in React (enabled by React Fiber) that allows React to work on multiple tasks at the same time,
+    making apps more responsive and interruptible.
+  -Concurrent Mode lets React prepare multiple versions of the UI in the background and decide which one to show — without blocking the main thread.
+   How to Use Concurrent Features
+    You don't enable "Concurrent Mode" like a switch anymore. Instead, it's enabled automatically when you use concurrent features like:
+    startTransition()
+    useTransition()
+    useDeferredValue()
+    Suspense + lazy
+ 
 How do you optimize performance in a React application?
 
 Explain how React works with Webpack and Babel.
