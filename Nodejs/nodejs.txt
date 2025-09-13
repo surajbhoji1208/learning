@@ -93,12 +93,10 @@ How do you create and consume a readable/writable stream?
 
 🔹 5. HTTP & Web Servers
 How do you create an HTTP server in Node.js?
+=>  const http = require("http");
+    const server = http.createServer((req, res) => {})
 
-What are request and response objects?
 
-How do you handle routing in a basic Node.js server?
-
-What are the different HTTP methods, and how are they handled?
 
 🔹 6. Express.js Framework
 What is Express.js? Why do we use it?
