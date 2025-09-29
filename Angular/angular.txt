@@ -2,6 +2,10 @@
 What is Angular and how is it different from AngularJS?
 
 What are components in Angular?
+=> In Angular, a component is the basic building block of the UI. It controls a specific part of the screen called a view. Each component is made up of three main parts:
+Template (HTML) → defines the UI.
+Class (TypeScript) → contains the logic and data.
+Metadata (Decorator @Component) → tells Angular how to process the component.
 
 What is the role of NgModule in Angular?
 =>NgModule plays a central role in organizing an application into cohesive blocks of functionality. 
@@ -246,12 +250,19 @@ How to implement custom validators in Angular?
     username = new FormControl('', [noSpaces]);
 
 What is FormGroup, FormControl, and FormArray?
+=>FormControl: represents a single form input element and its value/state.
+  FormGroup: is a collection of FormControls (or other groups/arrays) that allows us to manage a group of related fields together.
+  FormArray:  is a collection of FormControls (or groups) stored in an array, useful when we want a dynamic number of form fields.”
 
 How to handle nested forms in Angular?
 
 How do you reset or patch values in a reactive form?
+=>setValue() → updates all form fields, and requires every control to be specified.
+  patchValue() → updates only specific fields, leaving others unchanged.
+  reset() → clears the form, setting values back to initial state (optionally with defaults).”
 
 How to dynamically add/remove form fields?
+=>Explain form array
 
 How to show form validation errors dynamically?
 
@@ -293,26 +304,6 @@ How do child routes and nested routes work?
 
 How do you enable route reuse in Angular?
 
-✅ 7. Observables & RxJS (10 questions)
-What is an observable and how does it differ from a promise?
-
-How do you subscribe to an observable in Angular?
-
-What are common RxJS operators you've used? (map, switchMap, etc.)
-
-Difference between switchMap, mergeMap, and concatMap?
-
-How do you cancel a subscription in Angular?
-
-What is the async pipe and how does it work?
-
-How do you create a custom observable?
-
-What is Subject and BehaviorSubject?
-
-How do you handle multiple observables together using forkJoin, combineLatest, or zip?
-
-How do you debounce input using RxJS?
 
 ✅ 8. HTTP Client and API Integration (7 questions)
 How do you make an HTTP request in Angular?
