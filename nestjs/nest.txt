@@ -1,0 +1,132 @@
+1	What is Nestjs?
+=>   Nest(NestJS) is a framework for building efficient, scalable Node.js server side applications.
+     It uses progressive JavaScript and its built with and fully suports Typescript.
+
+
+7	What are the main components of a NestJS application?
+=>   The main contents of the nestjs application inlcude: Modules: Modules are a way of organizing related components into a single block. They provide a way to structure your application.
+     Controllers: Controllers are responsible for handling incoming requests and returning responses to the client.Controllers organize routes and handle HTTP requests that come to those routes.
+     Services: services are responsible for business logic and interacting with data sources. They can be injected into controllers or other services, promoting code reusability and separation of concerns.
+
+9	Can you explain how to use decorators in a NestJS controller?
+=>   Before explaining how to use decorators, let me explain more about what are decorators:
+     decorators are special functions that are prefixed with an @ symbol and can be attached to classes, methods, or properties. They are used to add metadata, methods, properties, or observe the behavior of the classes, methods, or properties they are attached to.
+     NestJS provides several built-in decorators, and you can also create custom decorators. Here are some examples of built-in decorators in NestJS:
+     Class decorators like @Controller(), @Module(), @Injectable(), etc. These are used to annotate classes.
+     Method decorators like @Get(), @Post(), @Put(), etc. These are used to annotate methods within controller classes to handle specific routes.
+     Parameter decorators like @Req(), @Res(), @Body(), etc. These are used to annotate parameters within route handling methods.
+     Property decorators like @Inject(). These are used to annotate properties within classes.
+     Custom decorators. You can create your own decorators to handle common tasks across your application.
+     For example, below is how method decorators are used to handle GET, POST, PUT, DELETE requests respectively.
+
+                    import {Controller,Get,Param,Body,Post,Patch,Delete,} from "@nestjs/common";
+
+                    @Controller("cats")
+                    export class CatsController {
+                         @Get()
+                         findAll(): string {
+                         return "This action returns all cats";
+                         }
+
+                         @Get(":id")
+                         findOne(@Param("id") id: number): string {
+                         return `This action returns a cat with the provided id`;
+                         }
+
+                         @Post()
+                         create(@Body() body: any): string {
+                         return `This action returns the body of the cat`;
+                         }
+
+                         @Patch("id")
+                         update(@Param("id") id: number, @Body() body: any): string {
+                         return `This action updates the body of the cat`;
+                         }
+
+                         @Delete("id")
+                         remove(@Param("id") id: number): string {
+                         return `This action removes a cat`;
+                         }
+                    }
+
+10	How can you use route parameters in a NestJS controller?
+=>   Route parameters in a NestJS controller can be accessed using the @Param() decorator in the controller methods.
+               @Patch('id')
+               update(@Param('id') id: number, @Body() body: any ): string {
+                    return `This action updates the body of the cat`;
+               }
+
+11	What is the role of the @Body() decorator?
+=>   The @Body() decorator in NestJS is used to extract the entire body of the incoming HTTP request.
+
+12	What is an interceptor in the context of NestJS?
+=>   An interceptor is a class annotated with the @Injectable() decorator and implements the NestInterceptor interface.
+     An Interceptor is function that can be used to intercept incoming requests to a NestJS application and perform some sort of manipulation before the request is handled by the route handler. This can be useful for things like logging, authentication and so on.
+     Binding extra logic before / after method execution: An Interceptor can execute logic before and after a method is executed. This can be useful for tasks like logging, transforming the result of a method, or handling errors.
+     Transforming the result returned from a function: An Interceptor can transform the response returned from a method. For example, you could use an interceptor to transform all responses to have a specific format.
+     Handling errors: An Interceptor can also handle errors thrown within your application. This can be useful for logging or transforming errors before they're sent to the client. Here is an example of an interceptor that logs the user interactions as shown in the Nestjs document
+
+               import {Injectable,NestInterceptor,ExecutionContext,CallHandler,} from "@nestjs/common";
+               import { Observable } from "rxjs";
+               import { tap } from "rxjs/operators";
+
+               @Injectable()
+               export class LoggingInterceptor implements NestInterceptor {
+                    intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+                    console.log("Before...");
+
+                    const now = Date.now();
+                    return next
+                         .handle()
+                         .pipe(tap(() => console.log(`After... ${Date.now() - now}ms`)));
+                    }
+               }
+
+13	What are pipes in the context of NestJS?
+14	What are guards in the context of NestJS?
+15	What are middlewares in the context of NestJS?
+16	Explain the concept of Dependency Injection in NestJS. How does it help in building modular and testable applications?
+17	What’s the difference between @injectable() and @inject() decorators?
+18	How does the Nest logger differ from the standard console.log() and when would you prefer one over the other?
+19	What is the difference between interceptors and middleware?
+20	What testing frameworks work best with NestJS?
+21	Explain the purpose of DTOs (Data Transfer Objects) in NestJS.
+22	How can you handle asynchronous operations in NestJS, and what is the role of the Promise object?
+23	Explain the purpose of the @InjectRepository() decorator in NestJS.
+24	Explain the purpose of the @nestjs/jwt package in NestJS?
+25	Discuss how tokens are used for authorization in an API. What is the difference between authentication and authorization, and how are these processes implemented with tokens?
+26	Why is it important for tokens to have an expiration time? How can you implement token expiration in NestJS, and what role do refresh tokens play in maintaining user sessions?
+27	Describe the mechanism for a token refresh in NestJS. How can you implement an automatic token refresh strategy to maintain user sessions?
+28	How does NestJS support authentication and authorization?
+29	What is the difference between Provider and Services in Nestjs, can we have a provider without an injectable decorator, Give examples?
+30	What are custom providers and how do they differ from standard Providers in Nest.js?
+31	How can you generate API documentation using Swagger in NestJS? Discuss the importance of documenting your API and how it benefits developers?
+32	Explain the purpose of the @nestjs/swagger ApiProperty(), ApiOperation() decorators?
+33	Explain the purpose of the Dockerfile in a NestJS application, and how it facilitates containerization?
+34	How can you use Docker Compose with NestJS, and what is its role in a multi-container setup?
+35	What is the purpose of the @nestjs/passport package, and how does it facilitate authentication in NestJS?
+36	How can you handle file uploads in NestJS, and what is the role of the Multer library?
+37	How does NestJS handle database interactions, and what are the supported databases?
+38	What is Circular dependency (dependency cycle) in Nestjs, and how can they be fixed?
+39	How can you handle errors in NestJS?
+40	How does NestJS handle CORS (Cross-Origin Resource Sharing)?
+41	Explain the purpose of the ExecutionContext in NestJS Middleware?
+42	How can you implement soft deletes in NestJS using TypeORM, and why might soft deletes be preferred over hard deletes?
+43	Explain the concept of environment variables in NestJS, and how can they be utilized for configuration management?
+44	What is the role of migration scripts in TypeORM, and how can you create and run migrations in a NestJS application?
+45	What is the purpose of ExecutionContext in NestJS?
+46	What is the purpose of the @Res() decorator in NestJS controllers?
+47	Explain the various Modules in NestJS?
+48	How can you secure your NestJS application?
+49	What is the entry file of NestJs application?
+50	What is the difference between dependency injection and inversion of control (IoC)?
+51	How can you implement Caching in NestJS?
+52	Explain the purpose of the Dependency Inversion Principle (DIP) in NestJS?
+53	How can you schedule tasks in NestJS?
+54	How can you handle database transactions in NestJS, and why are transactions important in certain scenarios?
+55	How can you implement versioning in NestJS APIs?
+56	Explain the purpose of the @nestjs/graphql Resolver and @nestjs/graphql Scalar decorators, and how they relate to GraphQL in NestJS?
+57	Explain the concept of Serialization and Deserialization in NestJS?
+58	Explain the role of NestJS middleware in the context of Microservices and provide a scenario where middleware is beneficial in a Microservices setup?
+59	Discuss the different types of coupling, such as tight coupling and loose coupling, and provide examples of how NestJS modules contribute to achieving loose coupling in a modularized application?
+60	How does NestJS support Server-Sent Events (SSE), and what are the primary advantages of using SSE for real-time communication in web applications?
