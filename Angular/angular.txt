@@ -268,57 +268,55 @@ How to show form validation errors dynamically?
 
 ✅ 5. Services and Dependency Injection (8 questions)
 What is a service in Angular?
+=>A service in Angular is a class that contains business logic, reusable code, or data which can be shared across multiple components.
+  It helps keep components lightweight and focused on UI, while services handle data fetching, state management, or utility logic.
+  We usually create services with the @Injectable() decorator and provide them in root or a module, so Angular’s Dependency Injection (DI) system can share the same instance wherever it’s needed.
 
 What is dependency injection in Angular?
+=>Dependency Injection is a design pattern where Angular automatically provides required services or objects to a class instead of us creating them manually. This reduces tight coupling, improves    testability, and makes code cleaner. For example, when I inject UserService into a component’s constructor, Angular’s injector creates and provides the instance.
 
 How do you provide a service in a specific module or component?
 
 What is the use of providedIn: 'root'?
+=>The @Injectable() decorator in Angular allows us to configure where a service should be registered with the Angular Injector.
+  This is controlled by the providedIn property.
+  Options:
+  providedIn:'root'
+      Service is registered in the root injector (AppModule level).
+      Creates a single instance (singleton) shared across the entire app.
+      Most commonly used.
+  providedIn: 'platform'
+      Service is registered in the platform injector.
+      Shared across multiple Angular applications running on the same page.
+  providedIn: 'any'
+      Service is registered in any injector that requests it.
+      A new instance will be created in each lazy-loaded module.
+      Useful for isolating service state per module.
 
-How do you share data between components using a service?
 
 How does hierarchical injection work in Angular?
 
 How to make a singleton service?
 
 What are multi providers in Angular?
+=>By default, when you provide a token (like a service) multiple times, the last one overrides the previous ones.
+  But sometimes we want multiple values for the same injection token — that’s where multi providers come in.
+        @Injectable()
+        export class AuthInterceptor implements HttpInterceptor {
+        intercept(req: HttpRequest<any>, next: HttpHandler) {
+            const cloned = req.clone({ setHeaders: { Authorization: 'Bearer token' } });
+            return next.handle(cloned);
+        }
+        }
 
-✅ 6. Routing and Navigation (10 questions)
-How do you configure routes in Angular?
+        @Injectable()
+        export class LoggingInterceptor implements HttpInterceptor {
+        intercept(req: HttpRequest<any>, next: HttpHandler) {
+            console.log('Request made:', req.url);
+            return next.handle(req);
+        }
+        }
 
-What is the difference between RouterModule.forRoot() and RouterModule.forChild()?
-
-How do you navigate between routes programmatically?
-
-What are route guards? Explain CanActivate, CanDeactivate, etc.
-
-How do you pass route parameters and query parameters?
-
-What is lazy loading and how do you implement it?
-
-What is route resolver and how is it useful?
-
-How can you add a 404 page in Angular?
-
-How do child routes and nested routes work?
-
-How do you enable route reuse in Angular?
-
-
-✅ 8. HTTP Client and API Integration (7 questions)
-How do you make an HTTP request in Angular?
-
-What is HttpClientModule and how do you import it?
-
-How do you handle error responses in HTTP calls?
-
-What is an HTTP interceptor and how do you create one?
-
-How do you send headers, query params, and body in HTTP requests?
-
-How to handle retrying failed requests?
-
-How do you mock HTTP calls in unit tests?
 
 
 ✅ 10. Performance Optimization (6 questions)
