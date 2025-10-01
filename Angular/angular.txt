@@ -320,30 +320,20 @@ What are multi providers in Angular?
 
 
 ✅ 10. Performance Optimization (6 questions)
-What is ChangeDetectionStrategy.OnPush and how does it work?
+What is ChangeDetectionStrategy?OnPush and how does it work?
+=> In Angular, change detection is the mechanism that checks for changes in component data and updates the DOM accordingly.
+By default, Angular uses ChangeDetectionStrategy.Default, which means it runs change detection for the entire component tree whenever any event (like click, HTTP response, timer, input change) occurs.
 
 How does Angular's change detection mechanism work?
+=>Change Detection Flow
+  Event happens (click, HTTP response, timer, etc.)
+  Zone.js notifies Angular
+  Angular runs change detection starting from root
+  Components are checked one by one
+  If a binding value changed → Angular updates the DOM
+  If not changed → Skips DOM update (but still runs checks)
 
-How do you optimize large lists in Angular?
 
-How to reduce initial bundle size?
-
-What are best practices to improve Angular performance?
-
-How does lazy loading help performance?
-
-✅ 11. Angular CLI and Build Process (6 questions)
-What is Angular CLI and what are some useful commands?
-
-What is the difference between ng build and ng serve?
-
-What is Ahead-of-Time (AOT) compilation?
-
-How do you build Angular app for production?
-
-How do you add and configure environments in Angular?
-
-How to customize Webpack in Angular (if needed)?
 
 ✅ 12. Miscellaneous / Real-world (10 questions)
 How do you secure an Angular app (e.g., JWT, AuthGuard)?
