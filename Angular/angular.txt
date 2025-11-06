@@ -356,3 +356,16 @@ How do you deploy an Angular app to production?
 
 What challenges have you faced in Angular projects and how did you overcome them?
 
+
+
+Angular developer questions
+-change detation
+-dependency injection
+-singloton service
+-directive
+-pipes
+-subject vs BehaviorSubject
+-concat map vs merge map
+-reply subject
+
+
