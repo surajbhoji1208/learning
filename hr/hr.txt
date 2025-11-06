@@ -46,3 +46,7 @@ To achieve this, I worked on optimizing APIs, PostgreSQL queries, and backend pr
  and implemented features like Bull Queues for background processing and cron jobs for scheduled updates. 
  We also ensured smooth communication between frontend and backend using Angular/React and Node.js.
   The focus was always on scalability, reliability, and performance, which helped us manage the heavy traffic efficiently.
+
+
+5) why should we hire u
+“You should hire me because I bring a strong combination of hands-on full-stack development experience, problem-solving ability, and proven impact on real projects. In my current role, I’ve worked end-to-end on both frontend and backend using Angular, React, Node.js, NestJS, and PostgreSQL, and have successfully improved application performance, optimized database queries, and delivered scalable features used by lakhs of users daily
