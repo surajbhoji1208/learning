@@ -369,3 +369,72 @@ Angular developer questions
 -reply subject
 
 
+
+Subject
+=>No initial value
+  Does NOT store last value
+  use when When you don’t care about past values, only future ones
+            ************eg********************
+            *  const subject = new Subject();
+            *  subject.next(1);
+            *  subject.next(2);
+            *  subject.subscribe(value => console.log("Subscriber:", value)); 
+            *  // Output: (nothing, because 1 & 2 already emitted)
+            *  subject.next(3);
+            *  // Output: Subscriber: 3
+
+BehaviorSubject
+=>✅ Must have an initial/default value
+  ✅ Always stores the latest value
+  Subscriber immediately receives last emitted value (even if emitted before subscription)
+  use When you need current state + future updates (like form state, logged-in user state, etc.)
+            ****************eg****************
+              const behavior = new BehaviorSubject(0); // initial value: 0
+
+              behavior.next(1);
+              behavior.next(2);
+
+              behavior.subscribe(value => console.log("Subscriber:", value));
+              // Output immediately: 2 (last emitted value)
+
+              behavior.next(3);
+              // Output: 3
+
+concatMap vs mergeMap              
+
+Feature           	concatMap	                          mergeMap
+Order             	Executes one at a time,               sequential	Executes all at once, parallel
+Output Order       	Preserves order                     	Does NOT guarantee order
+Use Case	          API calls in Order                  	API calls in parallel (faster, no dependency)
+Concurrency       	1 at a time                         	Unlimited by default
+
+With concatMap
+    ➡ A starts → A finishes
+    ➡ B starts → B finishes
+    ➡ C starts → C finishes
+    ✅ Ordered, but slower
+
+    from([1, 2, 3]).pipe(
+      concatMap(id => apiCall(id))
+    )
+
+With mergeMap
+    ➡ A, B, C start at the same time
+    ➡ Whichever finishes first is emitted first
+    ✅ Faster, unordered
+
+    from([1, 2, 3]).pipe(
+      mergeMap(id => apiCall(id))
+    )
+
+
+
+When to Use What?
+Situation	                                                           Use
+Button clicks, event streams                                        Subject
+App state, current user, selected item	                            BehaviorSubject
+Chat messages, notifications history, caching API data            	ReplaySubject
+API calls that must run in order	                                  concatMap
+API calls that can run in parallel                                	mergeMap
+
+
