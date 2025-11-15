@@ -141,9 +141,23 @@ What is memoization in React? How does React.memo work?
   It works like this:                  
                       const MemoizedComponent = React.memo(MyComponent);
                       Now, MyComponent will only re-render if its props change — based on a shallow comparison.
+ 
+What problem are useMemo & useCallback solving?
+=>React re-renders a component every time its parent re-renders.
+  During every render:
+    every variable is recreated
+    every object/array/function gets a new reference
+    logic/calculations re-run
+
+  This causes:
+    unnecessary expensive calculations
+    child components receiving new references → re-render unnecessarily
+    performance issues in complex UI
+    useMemo and useCallback solve this
 
 
 What are custom hooks? Can you give an example?
+=>explain toggel example
 
 why we always have to write supper(props) in class based component while receiving props
 =>In class based component we extends React.Component class
