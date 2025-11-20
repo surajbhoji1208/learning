@@ -197,6 +197,14 @@ How does React Fiber improve performance?
       Fiber uses a cooperative scheduling model.
       It can yield control back to the browser to handle higher-priority tasks like animations or user input.
 
+      Lifecycle with Fiber
+          Two main phases:
+          1. Render Phase (can be paused)
+              Calculate changes
+              Prepare the work
+          2. Commit Phase (cannot be paused)
+              Apply changes to DOM
+
 
 
 
