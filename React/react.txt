@@ -1,21 +1,21 @@
 Basic Level
-What is React.js? How does it work?
+Q)What is React.js? How does it work?
 =>"React.js is an open-source JavaScript library developed by Meta, mainly for building single-page applications
    with reusable components.
    It works using a virtual DOM, where changes are first applied to the virtual DOM and then efficiently 
    updated in the real DOM through reconciliation. This makes UI updates faster and more optimized." 
 
-What are the key features of React?
+Q)What are the key features of React?
 =>jsx,virtual dom for better performance, react hooks , react routing, these are key features of react 
 
-What is JSX? How is it different from HTML?
+Q)What is JSX? How is it different from HTML?
 =>JSX stands for JavaScript XML. It’s a syntax extension for JavaScript that lets us write HTML-like code directly inside JavaScript files. 
   It’s most commonly used in React to define how the UI should look.
   Transpiled by Babel”
   “Improves readability and maintainability”
   “Supports JS expressions inside {}”
 
-What is the Virtual DOM, and how does it improve performance?
+Q)What is the Virtual DOM, and how does it improve performance?
 =>The Virtual DOM is a lightweight, in-memory representation of the actual DOM.
  In React, instead of updating the real DOM directly whenever something changes, React updates the Virtual DOM first.
  When the application’s state changes:
@@ -24,7 +24,7 @@ What is the Virtual DOM, and how does it improve performance?
       Based on the differences, React calculates the minimum number of changes needed.
       Finally, it updates only those specific parts of the real DOM — not the entire UI.
 
-What are functional and class components?
+Q)What are functional and class components?
 =>React has two type of component 
     1)function 2)class
     1)functional : it is pure js function has no its own state
@@ -35,7 +35,7 @@ What are functional and class components?
                         it uses render method to return jsx
                         it has its own life cycle method
 
-What is the difference between state and props?
+Q)What is the difference between state and props?
 =>states are special function in react which is help to use control lifecycle of component
   State is a local, mutable data storage inside a component
   It allows a component to track and manage its own data.
@@ -43,7 +43,7 @@ What is the difference between state and props?
   Props are read-only data passed from a parent component to a child component.
 
 
-What are React Hooks? Can you name a few?
+Q)What are React Hooks? Can you name a few?
 =>  Allows functional components to use state & lifecycle features
     Simplifies component logic (No need for class components)
     Avoids using this (Easier to read & debug)
@@ -55,19 +55,19 @@ What are React Hooks? Can you name a few?
       4️⃣ useRef – For accessing DOM elements.
       5️⃣ useReducer – For complex state management.
 
-What is the difference between useState and useReducer?
+Q)What is the difference between useState and useReducer?
     Both useState and useReducer are React hooks used for state management in functional components. However, useState is best for simple state updates, while useReducer is useful for managing complex state logic."
     useState is a basic hook that allows components to store and update state directly. It's best for simple state values like numbers, booleans, or strings.
     useReducer is useful when state logic involves multiple related values or complex updates. Instead of directly updating the state, it uses a reducer function to handle actions and return a new state.
 
-What is the significance of key props in lists?
+Q)What is the significance of key props in lists?
 => Keys help React minimize DOM operations. If a list changes, React can match the old and new elements using the key, 
    so it only updates what’s necessary instead of re-rendering the whole list
    Good keys: Unique and stable. Usually an ID from your data (id or uuid).
    Bad keys: Using an index (key={index}) is not ideal because the index can change if you add, remove, or reorder items. That can break the mapping.
 
 Intermediate Level
-What is the difference between controlled and uncontrolled components?
+Q)What is the difference between controlled and uncontrolled components?
 =>      ➡️ Controlled Component
         In a controlled component, React controls the form element’s value.
         The value is bound to React state.
@@ -77,14 +77,14 @@ What is the difference between controlled and uncontrolled components?
         React does not directly manage the input’s current value.
         You use a ref to read the value when needed.
 
-What are Higher-Order Components (HOC)?
+Q)What are Higher-Order Components (HOC)?
 =>Higher order component is react pattern which accept component as args and return new component with new props or new feature
   it do not modify original component directly
 
-How does React handle forms and form validation?
+Q)How does React handle forms and form validation?
 =>controlled and uncontrolled Explain
 
-What is the Context API? How is it different from Redux?
+Q)What is the Context API? How is it different from Redux?
 =>It build in react feature to share data globally without having to pass props manually at every Level
   Used to avoid prop drilling
   It is good for simple global state
@@ -93,11 +93,11 @@ What is the Context API? How is it different from Redux?
          good for complex management 
          provide way to update,debug globally
 
-What is Prop Drilling, and how do you avoid it?
+Q)What is Prop Drilling, and how do you avoid it?
 =>Prop Drilling happens when you have to pass data through multiple layers of components,
   even if intermediate components don’t care about that data — they’re just passing it down.
 
-What is the difference between useEffect and componentDidMount?
+Q)What is the difference between useEffect and componentDidMount?
 =>componentDidMount is a lifecycle method in class-based components.
   It runs once, after the component is rendered to the DOM.
   Typical use: fetch data, set up subscriptions, run side effects that should only happen once.
@@ -105,7 +105,7 @@ What is the difference between useEffect and componentDidMount?
   It can mimic multiple lifecycle behaviors, including:componentDidMount,componentDidUpdate,componentWillUnmount
 
 
-Explain React's reconciliation process.
+Q)Explain React's reconciliation process.
 =>React's reconciliation process is the algorithm it uses to update the DOM efficiently when the state or props of a component change.
   Instead of re-rendering the whole UI from scratch, React uses a virtual DOM to track changes. When something changes:
   React creates a new virtual DOM tree.
@@ -113,7 +113,7 @@ Explain React's reconciliation process.
   Based on the difference, it calculates the minimal number of changes required.
   React then updates only those parts of the real DOM that have changed.
 
-What is React Router, and how do you implement dynamic routes?
+Q)What is React Router, and how do you implement dynamic routes?
 =>React Router is a standard routing library for React. It enables navigation between different views or pages in a React application without          reloading the page, by managing the URL and rendering the appropriate components.
   It provides components like <BrowserRouter>, <Routes>, <Route>, and hooks like useNavigate and useParams to handle navigation and access route-      related data.
 Dynamic Routes:
@@ -134,7 +134,7 @@ Dynamic Routes:
                     }
                     This will display User ID: 123 if the user visits /user/123.
 
-What is memoization in React? How does React.memo work?
+Q)What is memoization in React? How does React.memo work?
 =>Memoization in React is an optimization technique used to avoid unnecessary re-renders of components by caching the result of a component or
          function based on its inputs (props).
   React.memo is a Higher-Order Component (HOC) that allows functional components to skip re-rendering if their props haven't changed.
@@ -142,7 +142,7 @@ What is memoization in React? How does React.memo work?
                       const MemoizedComponent = React.memo(MyComponent);
                       Now, MyComponent will only re-render if its props change — based on a shallow comparison.
  
-What problem are useMemo & useCallback solving?
+Q)What problem are useMemo & useCallback solving?
 =>React re-renders a component every time its parent re-renders.
   During every render:
     every variable is recreated
@@ -156,10 +156,10 @@ What problem are useMemo & useCallback solving?
     useMemo and useCallback solve this
 
 
-What are custom hooks? Can you give an example?
+Q)What are custom hooks? Can you give an example?
 =>explain toggel example
 
-why we always have to write supper(props) in class based component while receiving props
+Q)why we always have to write supper(props) in class based component while receiving props
 =>In class based component we extends React.Component class
   so before use props we have to define props 
   it is going to define in parent class component
@@ -168,7 +168,7 @@ why we always have to write supper(props) in class based component while receivi
   Then with the help of this.props we can use props 
 
 Advanced Level
-What is the difference between Server-Side Rendering (SSR) and Client-Side Rendering (CSR)?
+Q)What is the difference between Server-Side Rendering (SSR) and Client-Side Rendering (CSR)?
 => In CSR, the browser (client) downloads a minimal HTML page, then runs JavaScript to render the content dynamically.
       How it works:
         User requests a web page.
@@ -182,7 +182,7 @@ What is the difference between Server-Side Rendering (SSR) and Client-Side Rende
         Browser displays content immediately.
         JavaScript hydrates the page to make it interactive.
 
-How does React Fiber improve performance?
+Q)How does React Fiber improve performance?
 =>React Fiber is a complete rewrite of the React core algorithm introduced in React 16. It was designed to improve performance, especially for complex UI rendering, animation, and responsive interactions.
   1. Incremental Rendering
       Old React: Rendering was synchronous and blocking — once it started rendering, it had to finish.
@@ -208,7 +208,7 @@ How does React Fiber improve performance?
 
 
 
-What is concurrent mode in React?
+Q)What is concurrent mode in React?
 =>-Concurrent Mode is an optional advanced feature in React (enabled by React Fiber) that allows React to work on multiple tasks at the same time,
     making apps more responsive and interruptible.
   -Concurrent Mode lets React prepare multiple versions of the UI in the background and decide which one to show — without blocking the main thread.
@@ -219,7 +219,7 @@ What is concurrent mode in React?
     useDeferredValue()
     Suspense + lazy
  
-How do you optimize performance in a React application?
+Q)How do you optimize performance in a React application?
 =>React provides multiple ways to optimize performance, especially for large applications. Some common techniques are:
     Avoid unnecessary re-renders
         Use React.memo to memoize functional components.
@@ -245,7 +245,7 @@ How do you optimize performance in a React application?
     Memoization of Selectors (Redux)
         Use reselect or RTK selectors to prevent unnecessary recalculations.
 
-Explain how React works with Webpack and Babel.
+Q)Explain how React works with Webpack and Babel.
 =>React itself is just a JavaScript library, but modern React applications use Webpack and Babel in the build process to make development easier.
   Babel
     React uses JSX, which browsers don’t understand directly.
