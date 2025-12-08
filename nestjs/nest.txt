@@ -83,20 +83,194 @@
                }
 
 13	What are pipes in the context of NestJS?
+     =>In NestJS, Pipes are classes used to transform and validate incoming request data before it reaches the route handler.
+       They run after the request is received but before the controller method is executed.
+          In NestJS, Pipes are classes used to transform and validate incoming request data before it reaches the route handler.
+               They run after the request is received but before the controller method is executed.
+               Pipes serve two main purposes:
+               1️⃣ Validation
+               Validate incoming data (DTOs).
+               If validation fails, Pipes throw an exception automatically.
+               2️⃣ Transformation
+               Convert input data into the required format (e.g., string → number).
+
+                     @Post()
+                    createUser(@Body(new ValidationPipe()) body: CreateUserDto) {
+                    return body;
+                    }
+
+                    @Get(':id')
+                    getUser(@Param('id', ParseIntPipe) id: number) {
+                    return id;
+                    }
+
+
 14	What are guards in the context of NestJS?
+=>   Guards are classes used to control whether a request should be allowed to proceed to a route handler.
+      They are mainly responsible for authentication and authorization,
+          import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+          @Injectable()
+          export class AuthGuard implements CanActivate {
+          canActivate(context: ExecutionContext): boolean {
+          const request = context.switchToHttp().getRequest();
+          return Boolean(request.headers.authorization); // simple example
+          }
+          }
+
 15	What are middlewares in the context of NestJS?
+=>   Middleware are functions that run before your route handlers and even before guards, interceptors, and pipes.
+     They sit early in the request lifecycle and are typically used for tasks like logging, authentication checks,
+     modifying the request/response objects, or running custom logic before the request reaches the controller.
+
 16	Explain the concept of Dependency Injection in NestJS. How does it help in building modular and testable applications?
+=>Dependency Injection (DI) in NestJS is a design pattern where the framework automatically provides the required dependencies (services, repositories, etc.) to classes instead of you creating them manually.
+     When a class needs that provider, NestJS automatically injects it through the constructor.
+     💡 How Dependency Injection Works in NestJS
+     You create a provider (service, repo, etc.).
+     You register the provider inside a module.
+     NestJS stores providers in the IoC container.
+
+     How DI Helps Build Modular Applications
+          1️⃣ Loosely Coupled Architecture
+          Classes don’t manage their own dependencies → components depend on abstractions, not implementations.
+          → Code is easier to modify or extend.
+          2️⃣ Reusability
+          A single service can be injected into multiple modules, controllers, or other services.
+          → No duplication, more maintainable code.
+
 17	What’s the difference between @injectable() and @inject() decorators?
+=> 1. @Injectable() — Marks a Class as a Provider
+     @Injectable() is placed on top of a class to tell NestJS that this class can be managed by the dependency injection (DI) container.
+     ✔ Makes the class a provider
+     ✔ Allows NestJS to create an instance
+     ✔ Enables NestJS to inject this provider into other classes
+   2.@Inject() is used when you inject a provider that doesn’t have a class type, such as a provider defined using useValue, useFactory, or a custom string/token.
+     NestJS cannot auto-resolve these, so @Inject() tells Nest exactly which provider token to use
+     PROVIDER
+                    {
+               provide: 'DATABASE_CONNECTION',
+                    useFactory: async () => {
+                    return await createConnection({
+                         host: 'localhost',
+                         port: 5432,
+                         database: 'test',
+                    });
+                    }
+               }
+     Injecting it:
+               constructor(
+                    @Inject('DATABASE_CONNECTION') 
+                    private readonly dbConnection
+                    ) {}
+
+
+
 18	How does the Nest logger differ from the standard console.log() and when would you prefer one over the other?
-19	What is the difference between interceptors and middleware?
-20	What testing frameworks work best with NestJS?
+=>NestJS provides a built-in Logger class that gives structured, controlled, and contextual logging, unlike plain console.log(), which is just raw output.
+  Nest Logger adds timestamps & context automatically
+
+19	What is the difference between interceptors and middleware,pipe gruard?
+=>1. Middleware
+          ✔ What it is
+               Functions that run before the request enters NestJS route handlers.
+               Similar to Express middleware.
+               Lowest-level request processing layer.
+          ✔ When it runs
+               Before Guards, Interceptors, Pipes, Controllers.
+               Very early in the request pipeline.
+          ✔ What it can do
+               Modify request (req) or response (res)
+               Perform logging or request validation
+               Call next() to pass control
+               Stop request early (e.g., deny access)
+               Add metadata to request object
+          ✔ Common Use Cases
+               Logging incoming HTTP requests
+               CORS, rate limiting
+               Basic auth (API key check)
+               Parsing custom headers
+               Adding request IDs
+          ✔ Limitations
+               Cannot transform response
+               Not tied to Nest’s DI lifecycle (Express-level)
+
+     🟧 2. Guards
+          ✔ What it is
+               Classes that decide whether the request can proceed.
+               Used for authorization and conditional access.
+          ✔ When it runs
+               After middleware
+               Before interceptors and pipes
+          ✔ What it can do
+               Allow or block a request by returning true or false
+               Throw exceptions to stop flow
+               Access ExecutionContext (request metadata)
+          ✔ Common Use Cases
+               Role-based access (AdminGuard)
+               Permission checks
+               JWT authentication (validate token)
+               Feature flag checks
+          ✔ Limitations
+               Cannot modify or transform the response
+               Not meant for request transformation
+               Not for heavy business logic
+
+     🟩 3. Interceptors
+          ✔ What it is
+               A “wrapper” around the controller method.
+               Runs before and after the controller.
+               Very powerful — can transform results or catch responses.
+          ✔ When it runs
+               After guards
+               Before the controller (pre-processing)
+               After the controller (post-processing)
+          ✔ What it can do
+               Transform response (most important!)
+               Apply mapping logic (e.g., wrap all responses in { data: ... })
+               Add logging/timing for performance
+               Implement caching
+               Modify returned observables
+          ✔ Common Use Cases
+               Transforming API responses
+               Request/response logging
+               Measuring execution time
+               Caching responses
+               Binding extra logic around method execution
+          ✔ Limitations
+               Cannot change the raw request body like middleware
+               Works at Nest layer, not Express low­-level
+
+     🟪 4. Pipes
+          ✔ What it is
+               Functions that validate or transform incoming data.
+               Specially designed for validation and parsing.
+          ✔ When it runs
+               After Guards
+               Before Controller handler
+               On method parameters (DTOs)
+          ✔ What it can do
+               Validate incoming payload (class-validator)
+               Transform types (string → number)
+               Clean incoming data
+
+
 21	Explain the purpose of DTOs (Data Transfer Objects) in NestJS.
-22	How can you handle asynchronous operations in NestJS, and what is the role of the Promise object?
+=>A DTO (Data Transfer Object) is a TypeScript class used to define the shape, structure, and validation rules of incoming data — usually for:
+     HTTP request bodies
+     Query parameters
+     Route parameters
 23	Explain the purpose of the @InjectRepository() decorator in NestJS.
-24	Explain the purpose of the @nestjs/jwt package in NestJS?
-25	Discuss how tokens are used for authorization in an API. What is the difference between authentication and authorization, and how are these processes implemented with tokens?
-26	Why is it important for tokens to have an expiration time? How can you implement token expiration in NestJS, and what role do refresh tokens play in maintaining user sessions?
-27	Describe the mechanism for a token refresh in NestJS. How can you implement an automatic token refresh strategy to maintain user sessions?
+=>@InjectRepository() is a decorator used in NestJS (with TypeORM) to inject a database repository into your service using Nest’s Dependency Injection system.
+     Instead of manually creating a database connection, Nest and TypeORM handle i
+     A Repository in TypeORM is the object that gives you methods like:
+     find()
+     findOne()
+     save()
+     update()
+     delete()
+     custom queries
+     So @InjectRepository() allows you to access the database table/entity inside your service.
+
 28	How does NestJS support authentication and authorization?
 29	What is the difference between Provider and Services in Nestjs, can we have a provider without an injectable decorator, Give examples?
 30	What are custom providers and how do they differ from standard Providers in Nest.js?
