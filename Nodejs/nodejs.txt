@@ -203,3 +203,16 @@ Would you like a PDF version or a mock interview setup based on these topics nex
 
 
 event buble
+Event bubbling in Node.js is not automatic.
+Node.js EventEmitter does not provide bubbling like the browser DOM.
+But we can implement bubbling manually by re-emitting events from a child emitter to a parent emitter.
+This helps propagate events through an application hierarchy (child → parent → global).
+
+cluster vs frok
+Cluster is used to scale a Node.js server across multiple CPU cores by creating worker processes that share the same server port.
+Fork is used to create a child process to run a separate JavaScript file for CPU-heavy tasks, and does not share ports or balance load
+function vs array function
+stream and buffer
+securiry in app
+cors error
+microtasks and macrotasks
