@@ -259,6 +259,7 @@
      HTTP request bodies
      Query parameters
      Route parameters
+
 23	Explain the purpose of the @InjectRepository() decorator in NestJS.
 =>@InjectRepository() is a decorator used in NestJS (with TypeORM) to inject a database repository into your service using Nest’s Dependency Injection system.
      Instead of manually creating a database connection, Nest and TypeORM handle i
@@ -272,16 +273,49 @@
      So @InjectRepository() allows you to access the database table/entity inside your service.
 
 30	What are custom providers and how do they differ from standard Providers in Nest.js?
-31	How can you generate API documentation using Swagger in NestJS? Discuss the importance of documenting your API and how it benefits developers?
-32	Explain the purpose of the @nestjs/swagger ApiProperty(), ApiOperation() decorators?
-33	Explain the purpose of the Dockerfile in a NestJS application, and how it facilitates containerization?
-34	How can you use Docker Compose with NestJS, and what is its role in a multi-container setup?
+=>   A provider is any class or value that NestJS can manage and inject using its Dependency Injection (DI) system
+     Custom providers are providers where you explicitly define how the dependency is created or resolved, instead of letting NestJS instantiate a class automatically.
+     Custom providers use an object-based syntax with provide and one of:
+          useClass
+          useValue
+          useFactory
+          useExisting
+
+
 35	What is the purpose of the @nestjs/passport package, and how does it facilitate authentication in NestJS?
+=>   passport.js is node js popular middleware library but its not titly inegrated with nest js DI and decorator
+     :. nest/passport comes in pitchure 
+          wrap passport into nest js guards
+          integrated with nest js DI
+          provide clean stable and scalable authentication
+           High-Level Flow
+               Client sends request with credentials/token
+               AuthGuard intercepts the request
+               Passport strategy validates the credentials
+               Valid user is attached to request.user
+               Controller receives authenticated request
+
 36	How can you handle file uploads in NestJS, and what is the role of the Multer library?
-37	How does NestJS handle database interactions, and what are the supported databases?
+=> Multer is a Node.js middleware for handling multipart/form-data, which is primarily used for file uploads.
+     NestJS uses Multer internally to handle file uploads in a clean, decorator-based way.
+     npm install @nestjs/platform-express multer
+
 38	What is Circular dependency (dependency cycle) in Nestjs, and how can they be fixed?
+=>A circular dependency occurs when two or more providers/modules depend on each other directly or indirectly, creating a dependency loop that NestJS cannot resolve automatically.
+     NestJS DI container cannot determine which dependency to create first
+     Leads to runtime errors or undefined injections
+          Ways to Fix Circular Dependencies
+               Use forwardRef() (Most Common Fix)
+               Refactor Shared Logic into a Separate Service
+          
 39	How can you handle errors in NestJS?
+=>   NestJS provides a structured and centralized error-handling system built on top of Node.js
+     eg BadRequestException
+
 40	How does NestJS handle CORS (Cross-Origin Resource Sharing)?
+=>   cors is mechanisum where one domain or ip can use Resource of other domain
+     cors is desable by defauld in nest js
+     
 41	Explain the purpose of the ExecutionContext in NestJS Middleware?
 42	How can you implement soft deletes in NestJS using TypeORM, and why might soft deletes be preferred over hard deletes?
 43	Explain the concept of environment variables in NestJS, and how can they be utilized for configuration management?
