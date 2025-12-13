@@ -271,7 +271,6 @@
      custom queries
      So @InjectRepository() allows you to access the database table/entity inside your service.
 
-29	What is the difference between Provider and Services in Nestjs, can we have a provider without an injectable decorator, Give examples?
 30	What are custom providers and how do they differ from standard Providers in Nest.js?
 31	How can you generate API documentation using Swagger in NestJS? Discuss the importance of documenting your API and how it benefits developers?
 32	Explain the purpose of the @nestjs/swagger ApiProperty(), ApiOperation() decorators?
