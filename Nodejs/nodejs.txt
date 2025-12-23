@@ -98,42 +98,46 @@ How do you create an HTTP server in Node.js?
 
 
 
-🔹 6. Express.js Framework
-What is Express.js? Why do we use it?
 
-How do you create a basic route using Express?
-
-What is middleware in Express? Types and usage?
-
-How do you handle errors in Express?
-
-What is the difference between app.use() and app.get()?
-
-How do you use route parameters and query strings?
-
-What is express.Router() and why is it useful?
 
 🔹 7. Error Handling & Debugging
 How do you handle errors in Node.js and Express?
 
-What is the use of try/catch with async/await?
 
 How do you use the debug module?
-
-What are common Node.js exceptions and how do you handle them?
+=>  Lightweight alternative to console.log
+    Logs only when enabled via environment variable
+    Supports namespaces (app:server, db:query)
+    Safe for production (no log spam)
 
 🔹 8. Middleware & Request Lifecycle
 What is the request-response lifecycle in Express?
+=>  1️⃣ Client sends an HTTP request
+    2️⃣ Express receives the request
+    3️⃣ Global Middleware Execution
+    4️⃣ Route Matching
+    6️⃣ Controller / Route Handler
+    7️⃣ Response is Sent
 
 What are third-party middleware like morgan, cors, and body-parser?
 
-How do you write custom middleware?
 
 🔹 9. Databases Integration
 How do you connect Node.js with a database (PostgreSQL, MongoDB, MySQL)?
 
 What is the difference between ORM and ODM?
-
+=>ORM vs ODM
+    ORM:Object-Relational Mapping
+            Database type-Relational (SQL)
+            Data model:Tables & rows
+            Schema:Fixed schema
+            Relationships:Foreign keys, joins
+    ODM:Object-Document Mapping
+                Document (NoSQL)
+                JSON-like documents
+                Flexible schema
+                Flexible schema
+                
 How do you perform CRUD operations in Node.js using a database?
 
 What is the use of mongoose (for MongoDB) or sequelize/typeorm (for SQL DBs)?
@@ -160,23 +164,9 @@ What is load balancing and how is it handled?
 
 How do you prevent memory leaks?
 
-🔹 12. Testing
-How do you write unit tests for Node.js?
 
-What tools are commonly used (Mocha, Chai, Jest)?
 
-How do you mock dependencies in tests?
 
-🔹 13. Deployment & DevOps Basics
-How do you deploy a Node.js app?
-
-What are .env files and why are they used?
-
-How do you set environment variables?
-
-What is PM2 and how is it used in production?
-
-How do you log errors in production?
 
 🔹 14. Advanced Topics
 Explain process.nextTick(), setImmediate(), and setTimeout().

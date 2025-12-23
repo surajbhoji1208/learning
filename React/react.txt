@@ -293,3 +293,141 @@ Project structure
       VideoContainer
         VideoCard
 
+#React RCA
+
+  1️⃣ First: What problem RSC is solving (internals view)
+
+  Traditional React apps had two bad choices:
+  ❌ CSR (Client Side Rendering)
+    Send all JS to browser
+    Browser fetches data
+    Slow first paint
+    Large JS bundle
+  ❌ SSR (Server Side Rendering)
+    Server renders HTML
+    Browser still downloads full JS
+    Hydration cost
+    Duplicate work (server + client)
+  ✅ RSC goal
+  Send UI + data without sending JS logic to the browser
+  RSC sends React elements, not HTML, not JS logic.
+
+  2️⃣ Key Concept: Server Components are NEVER shipped to browser
+  This is the most important line to remember:
+  Server Component code does not exist in the client bundle
+    So:
+    No hooks like useState
+    No event handlers
+    No browser APIs
+    They run once on the server.
+
+  3️⃣ How RSC execution actually happens (timeline)
+  Let’s walk through a request step by step.
+
+  4️⃣ Step-by-Step RSC Flow (Behind the Scenes)
+    📌 Step 1: Browser requests a route
+      GET /dashboard
+
+    📌 Step 2: Server starts rendering React tree
+
+      React starts rendering Server Components first.
+
+      Example:
+      <Page>  ← server
+        <Header /> ← server
+        <UserList /> ← server
+        <Counter /> ← client
+      </Page>
+
+    📌 Step 3: Server Components execute normally
+      On the server:
+      const users = await db.user.findMany()
+      ✔ DB access
+      ✔ Secrets allowed
+      ✔ Filesystem allowed
+
+    📌 Step 4: Client Components are NOT executed on server
+      Instead:
+      React inserts placeholders
+      Marks where Client Components go
+      So React says:
+      “I will render this later in the browser”
+
+  5️⃣ The Flight Protocol (Most Important Internals)
+    React does NOT send HTML for RSC.
+    It sends a binary/JSON-like stream called:🛫 React Flight Payload
+    This payload contains:
+      Component tree structure
+      Serialized props
+      Component references
+      Instructions for client rendering
+      Example (simplified):
+      {
+        "type": "UserList",
+        "props": {
+          "users": [
+            { "id": 1, "name": "Suraj" }
+          ]
+        }
+      }
+
+      🚫 No JS logic
+      🚫 No functions
+      🚫 No closures
+
+  6️⃣ Streaming: Why RSC is fast
+    React streams chunks as soon as they’re ready.
+    Header → streamed
+    Sidebar → streamed
+    UserList → streamed
+    Footer → streamed
+
+    Browser starts rendering before everything is ready.
+    This is why RSC feels instant.
+
+  7️⃣ Client receives Flight payload (not HTML)
+    Browser receives:
+      React tree description
+      Serialized data
+    Then:
+      Client React runtime reconstructs the UI
+      Client Components get hydrated
+
+  8️⃣ Hydration is PARTIAL (Big improvement)
+    In SSR:
+      Entire page is hydrated
+    In RSC:
+     Only Client Components hydrate
+    Example:
+      <h1>Users</h1>  ❌ no hydration
+      <ul>...</ul>   ❌ no hydration
+      <button />     ✅ hydrated
+    Result:
+      Much less JS
+      Faster Time to Interactive
+
+  9️⃣ Why Server Components can import Client Components
+    This works:
+    // server
+      import Counter from './Counter'
+      Why?
+      Server just references it
+      Client loads it later
+      This does NOT work:
+    // client
+      import ServerComponent from './ServerComponent'
+      Why?
+      Browser cannot execute server-only code
+
+  🔟 Data Fetching Deduplication (Hidden Benefit)
+    React caches fetches during a single request.
+    await fetch('/api/user')
+    await fetch('/api/user') // deduped
+    Only one request is made.
+
+  1️⃣1️⃣ Why RSC is NOT SSR (Important Interview Point)
+  SSR	                                RSC
+  Sends HTML            	        Sends React tree
+  Hydration everywhere	          Partial hydration
+  Duplicate logic       	        Single execution
+  No backend access after render	Full backend access
