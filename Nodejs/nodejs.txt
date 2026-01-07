@@ -193,16 +193,42 @@ Would you like a PDF version or a mock interview setup based on these topics nex
 
 
 event buble
-Event bubbling in Node.js is not automatic.
-Node.js EventEmitter does not provide bubbling like the browser DOM.
-But we can implement bubbling manually by re-emitting events from a child emitter to a parent emitter.
-This helps propagate events through an application hierarchy (child → parent → global).
+    Event bubbling in Node.js is not automatic.
+    Node.js EventEmitter does not provide bubbling like the browser DOM.
+    But we can implement bubbling manually by re-emitting events from a child emitter to a parent emitter.
+    This helps propagate events through an application hierarchy (child → parent → global).
 
 cluster vs frok
-Cluster is used to scale a Node.js server across multiple CPU cores by creating worker processes that share the same server port.
-Fork is used to create a child process to run a separate JavaScript file for CPU-heavy tasks, and does not share ports or balance load
+    Cluster is used to scale a Node.js server across multiple CPU cores by creating worker processes that share the same server port.
+    Fork is used to create a child process to run a separate JavaScript file for CPU-heavy tasks, and does not share ports or balance load
 function vs array function
+
 stream and buffer
+    What is Buffer?
+        Temporary storage for raw binary data
+        Data is loaded all at once into memory
+        Used when data size is small or manageable
+    Key Points
+        Stored in RAM
+        Fast access, but memory-heavy
+        Not suitable for very large files
+    Example
+        const buf = Buffer.from('Hello World');
+        console.log(buf);              // <Buffer 48 65 6c 6c 6f 20 57 6f 72 6c 64>
+        console.log(buf.toString());
+
+    What is Stream?
+        Handles large or continuous data
+        Data flows incrementally
+        Memory efficient
+            const fs = require('fs');
+            const readStream = fs.createReadStream('large-file.txt');
+            readStream.on('data', chunk => {
+            console.log('Received chunk:', chunk.length);
+            });
+
+
+
 securiry in app
 cors error
 microtasks and macrotasks
