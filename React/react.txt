@@ -207,7 +207,6 @@ Q)How does React Fiber improve performance?
 
 
 
-
 Q)What is concurrent mode in React?
 =>-Concurrent Mode is an optional advanced feature in React (enabled by React Fiber) that allows React to work on multiple tasks at the same time,
     making apps more responsive and interruptible.
@@ -431,3 +430,89 @@ Project structure
   Hydration everywhere	          Partial hydration
   Duplicate logic       	        Single execution
   No backend access after render	Full backend access
+
+#Error boundaries
+=>Error Boundary is used to catch runtime errors in UI components and 
+  show a fallback UI instead of crashing the whole app.
+  1. Error Boundary in Next.js (App Router)
+  You can create an error.tsx file inside a route folder.
+            app/
+          ├── dashboard/
+          │   ├── page.tsx
+          │   └── error.tsx
+  How it works
+  If any error occurs in dashboard/page.tsx or its children, this file will render.
+  error → contains the thrown error.
+  reset() → re-tries rendering the component.
+
+  What is Event loop ? How it's useful
+What is closure ? Example in js
+Hoisting in js benefits and drawbacks
+Which things introduce in ES6, ES7 and ES8
+What is promises ?
+rest ans spred operator
+
+Difference between promises , callback, async await 
+
+Promise.all vs promise.allSettle
+
+Cluster vs fork
+
+Function vs arrow function
+
+Which standards you follow for code like quality, reviews
+
+What are the predefined modules in node
+
+Express vs nest
+
+Nodejs architecture with request management 
+
+Buffer in Nodejs
+
+Streams in Nodejs
+
+How you manage security in Nodejs app
+
+How CORS error occurs?
+
+Micro task vs Macro task in js
+
+Callback hell ?
+
+Let var const difference 
+
+What is typeORM benefits of it
+
+What is decorator in nestjs
+
+Dependency injection in nest
+
+What is Middleware. Difference between Middleware vs interceptor 
+
+NestJs request life cycle
+
+What is scaling. Horizontal vs vertical scaling
+
+Difference between sql and nosql database
+
+How to handle database query performance 
+
+Find vs filter in js
+for loop , for each loop
+
+Which is best for data fetch in parallel execution 
+
+What is MVC
+
+ORM  vs ODM in database 
+
+Difference between DDL DML TCL
+
+What is Sharding in database 
+
+How to optimize database
+
+Key type in slq primary, foreign etc
+
+What is trigger, stored procedure in DB

@@ -232,3 +232,131 @@ stream and buffer
 securiry in app
 cors error
 microtasks and macrotasks
+
+
+
+data types in PostgreSQL
+1. Numeric Types
+SMALLINT
+INTEGER / INT
+BIGINT
+DECIMAL
+NUMERIC
+REAL
+DOUBLE PRECISION
+SMALLSERIAL
+SERIAL
+BIGSERIAL
+
+2. Monetary Type
+MONEY
+
+3. Character (String) Types
+CHAR(n)
+CHARACTER(n)
+VARCHAR(n)
+CHARACTER VARYING(n)
+TEXT
+
+4. Boolean Type
+BOOLEAN
+
+5. Date & Time Types
+DATE
+TIME
+TIME WITH TIME ZONE
+TIMESTAMP
+TIMESTAMP WITH TIME ZONE
+INTERVAL
+
+6. Binary Data Types
+BYTEA
+
+7. UUID Type
+UUID
+
+8. JSON Types
+JSON
+JSONB
+
+9. Array Types
+Any data type can be an array
+Examples:
+INT[]
+TEXT[]
+UUID[]
+
+10. Enumerated Types
+ENUM (user-defined)
+
+11. Network Address Types
+CIDR
+INET
+MACADDR
+MACADDR8
+
+12. Geometric Types
+POINT
+LINE
+LSEG
+BOX
+PATH
+POLYGON
+CIRCLE
+
+13. Bit String Types
+BIT(n)
+BIT VARYING(n)
+
+14. Text Search Types
+TSVECTOR 
+TSQUERY
+
+15. Range Types
+INT4RANGE
+INT8RANGE
+NUMRANGE
+TSRANGE
+TSTZRANGE
+DATERANGE
+
+
+#Cluster in Node.js
+    Node.js Cluster is a built-in module that lets you run multiple Node.js processes (workers) to utilize all CPU cores.
+    Since Node.js is single-threaded, a single process can use only one CPU core. 
+    Clustering improves performance and scalability for high-traffic servers.
+    CPU with 4 cores
+        Primary Process (manager)
+        ├── Worker 1 → 1 Thread → 1 Event Loop → Core 1
+        ├── Worker 2 → 1 Thread → 1 Event Loop → Core 2
+        ├── Worker 3 → 1 Thread → 1 Event Loop → Core 3
+        └── Worker 4 → 1 Thread → 1 Event Loop → Core 4
+
+#Socket 
+-web socket is underline concept and socket.io is library
+-socket.io is library that enable low-latency,bidirectional and event based communication between client and server
+backend:
+    -first step is to install package that is socket.io
+    -need to configure this with http module 
+    -now create a server 
+        const server = http.createServer(app)
+        const socket = require("socket.io)
+        const io = socket(server,{
+            cors:{
+                origin:"localhost:3000"
+            }
+        })
+    -to start listening to connection there is on method
+        io.on("connection",(socket)={
+            //handle event
+            socket.on("join",(userId,targetedUserId)=>
+            {
+                const room = [userId,targetedUserId].join("_")
+                socket.join(room)
+            })
+        })
+    -whenever someone join there is room created for that chat, multiple rooms can be created for multiple chats
+    -room is like unique id for that chat
+    -now there is method called join(room) use that to join those user to room
+    -there is method to emmet data for both client and server socket.emit("msg",{data})
+    
