@@ -431,6 +431,45 @@ Project structure
   Duplicate logic       	        Single execution
   No backend access after render	Full backend access
 
+#rENDERING ways
+1. Client Side Rendering (CSR)
+  =>Browser → request page
+    Server → sends empty HTML + JS bundle
+    Browser → downloads JS
+    React renders UI
+2. Server Side Rendering (SSR)
+=>Browser → request page
+  Server → render React
+  Server → send HTML
+  Browser → hydrate React
+      Example:
+      export async function getServerSideProps() {
+      const res = await fetch("https://api.example.com/users");
+      const users = await res.json();
+
+      return { props: { users } };
+    }
+3. Static Site Generation (SSG)
+=>Build time → render pages
+  Server → send static HTML
+  Browser → show page
+  No hydration needed
+      Example:
+      export async function getStaticProps() {
+      const res = await fetch("https://api.example.com/users");
+      const users = await res.json();
+
+      return { props: { users } };
+    }
+4. Incremental Static Regeneration (ISR)
+=>Updates static pages without rebuilding the entire site.
+      Example:
+      export async function getStaticProps() {
+      const res = await fetch("https://api.example.com/users");
+      const users = await res.json();
+
+      return { props: { users }, revalidate: 60 };
+    }
 #Error boundaries
 =>Error Boundary is used to catch runtime errors in UI components and 
   show a fallback UI instead of crashing the whole app.
@@ -516,3 +555,6 @@ How to optimize database
 Key type in slq primary, foreign etc
 
 What is trigger, stored procedure in DB
+
+REACT element -create and clone element
+how to reduce bundle size
