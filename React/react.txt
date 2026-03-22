@@ -516,3 +516,22 @@ How to optimize database
 Key type in slq primary, foreign etc
 
 What is trigger, stored procedure in DB
+
+
+
+
+*******************REDUX****************
+What is Redux
+=>Redux is a state management library used to manage global data in an application.
+  1️⃣ Store
+    The central place where all data is stored.
+  2️⃣ Action
+    Actions describe what happened.
+  3️⃣ Reducer
+    Reducer updates the state.
+  
+  Redux Toolkit (RTK) is the official recommended way to write Redux.
+  Redux Toolkit reduces:
+    boilerplate code
+    complex setup
+    manual immutable updates
