@@ -261,6 +261,8 @@ Q)Explain how React works with Webpack and Babel.
     The browser then runs this bundled JavaScript to render your React app.
 
 What are synthetic events in React?
+=>A Synthetic Event is an object provided by React that normalizes native browser 
+  events so they behave the same in every browser.
 
 How does React handle error boundaries?
 
