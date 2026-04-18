@@ -325,12 +325,26 @@ DATERANGE
     Node.js Cluster is a built-in module that lets you run multiple Node.js processes (workers) to utilize all CPU cores.
     Since Node.js is single-threaded, a single process can use only one CPU core. 
     Clustering improves performance and scalability for high-traffic servers.
+    1 process = 1 CPU core usage ❌ (limited)
+    Cluster = running multiple Node.js processes to use multiple CPU cores
     CPU with 4 cores
         Primary Process (manager)
         ├── Worker 1 → 1 Thread → 1 Event Loop → Core 1
         ├── Worker 2 → 1 Thread → 1 Event Loop → Core 2
         ├── Worker 3 → 1 Thread → 1 Event Loop → Core 3
         └── Worker 4 → 1 Thread → 1 Event Loop → Core 4
+    
+    CPU Core 1 → Worker 1 (Process)
+              → Event Loop
+              → Main Thread
+              → Thread Pool (4 threads)
+    CPU Core 2 → Worker 2 (Process)
+                → Event Loop
+                → Main Thread
+                → Thread Pool
+    CPU Core 3 → Worker 3 ...
+
+    Cluster = multiple processes  Each process = 1 core + 1 event loop + thread pool
 
 #Socket 
 -web socket is underline concept and socket.io is library
@@ -359,4 +373,70 @@ backend:
     -room is like unique id for that chat
     -now there is method called join(room) use that to join those user to room
     -there is method to emmet data for both client and server socket.emit("msg",{data})
+
+    Difference between promises , callback, async await 
+
+Promise.all vs promise.allSettle
+
+Cluster vs fork
+=>Cluster internally uses fork() to create worker processes, but adds load balancing and management on top of it.
+
+Function vs arrow function
+
+Which standards you follow for code like quality, reviews
+
+What are the predefined modules in node
+
+Express vs nest
+
+Nodejs architecture with request management 
+
+Buffer in Nodejs
+
+Streams in Nodejs
+
+How you manage security in Nodejs app
+
+How CORS error occurs?
+
+Micro task vs Macro task in js
+
+Callback hell ?
+
+Let var const difference 
+
+What is typeORM benefits of it
+
+What is decorator in nestjs
+
+Dependency injection in nest
+
+What is Middleware. Difference between Middleware vs interceptor 
+
+NestJs request life cycle
+
+What is scaling. Horizontal vs vertical scaling
+
+Difference between sql and nosql database
+
+How to handle database query performance 
+
+Find vs filter in js
+for loop , for each loop
+
+Which is best for data fetch in parallel execution 
+
+What is MVC
+
+ORM  vs ODM in database 
+
+Difference between DDL DML TCL
+
+What is Sharding in database 
+
+How to optimize database
+
+Key type in slq primary, foreign etc
+
+What is trigger, stored procedure in DB
     
