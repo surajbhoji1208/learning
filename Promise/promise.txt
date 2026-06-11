@@ -89,3 +89,23 @@ js
 Implement a retry mechanism for a Promise-based API call.
 Write a function using Promise.all() to fetch data from multiple URLs at once.
 Create a simple polling mechanism using Promises.
+
+
+
+**********TRICKY Questions POINTS*************************
+-if there is multiple then block with catch , catch will cathc the error and remaining execute as it is
+-You didn’t return → next .then() gets undefined
+                Promise.resolve()
+                    .then(() => {
+                        Promise.resolve("hello");
+                    })
+                    .then((res) => {
+                        console.log(res);
+                    });
+-Nested microtasks go to end of queue
+                    Promise.resolve().then(() => {
+                    console.log("A");
+                    Promise.resolve().then(() => console.log("B"));
+                    });
+
+                    Promise.resolve().then(() => console.log("C"));

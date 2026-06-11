@@ -1,266 +1,263 @@
 Basic Level
 Q)What is React.js? How does it work?
 =>"React.js is an open-source JavaScript library developed by Meta, mainly for building single-page applications
-   with reusable components.
-   It works using a virtual DOM, where changes are first applied to the virtual DOM and then efficiently 
-   updated in the real DOM through reconciliation. This makes UI updates faster and more optimized." 
+with reusable components.
+It works using a virtual DOM, where changes are first applied to the virtual DOM and then efficiently
+updated in the real DOM through reconciliation. This makes UI updates faster and more optimized."
 
 Q)What are the key features of React?
-=>jsx,virtual dom for better performance, react hooks , react routing, these are key features of react 
+=>jsx,virtual dom for better performance, react hooks , react routing, these are key features of react
 
 Q)What is JSX? How is it different from HTML?
-=>JSX stands for JavaScript XML. It’s a syntax extension for JavaScript that lets us write HTML-like code directly inside JavaScript files. 
-  It’s most commonly used in React to define how the UI should look.
-  Transpiled by Babel”
-  “Improves readability and maintainability”
-  “Supports JS expressions inside {}”
+=>JSX stands for JavaScript XML. It’s a syntax extension for JavaScript that lets us write HTML-like code directly inside JavaScript files.
+It’s most commonly used in React to define how the UI should look.
+Transpiled by Babel”
+“Improves readability and maintainability”
+“Supports JS expressions inside {}”
 
 Q)What is the Virtual DOM, and how does it improve performance?
 =>The Virtual DOM is a lightweight, in-memory representation of the actual DOM.
- In React, instead of updating the real DOM directly whenever something changes, React updates the Virtual DOM first.
- When the application’s state changes:
-    React updates the Virtual DOM.
-      It then compares the new Virtual DOM with the previous one using a process called diffing.
-      Based on the differences, React calculates the minimum number of changes needed.
-      Finally, it updates only those specific parts of the real DOM — not the entire UI.
+In React, instead of updating the real DOM directly whenever something changes, React updates the Virtual DOM first.
+When the application’s state changes:
+React updates the Virtual DOM.
+It then compares the new Virtual DOM with the previous one using a process called diffing.
+Based on the differences, React calculates the minimum number of changes needed.
+Finally, it updates only those specific parts of the real DOM — not the entire UI.
 
 Q)What are functional and class components?
-=>React has two type of component 
-    1)function 2)class
-    1)functional : it is pure js function has no its own state
-                    react hooks give spacial power to manage state
-                    it is lightweight
-                    it return jsx 
-    2)class component: it is js class that extend component
-                        it uses render method to return jsx
-                        it has its own life cycle method
+=>React has two type of component
+1)function 2)class
+1)functional : it is pure js function has no its own state
+react hooks give spacial power to manage state
+it is lightweight
+it return jsx
+2)class component: it is js class that extend component
+it uses render method to return jsx
+it has its own life cycle method
 
 Q)What is the difference between state and props?
 =>states are special function in react which is help to use control lifecycle of component
-  State is a local, mutable data storage inside a component
-  It allows a component to track and manage its own data.
-  Props are like function args, data are pass to component to component with parent child relation 
-  Props are read-only data passed from a parent component to a child component.
-
+State is a local, mutable data storage inside a component
+It allows a component to track and manage its own data.
+Props are like function args, data are pass to component to component with parent child relation
+Props are read-only data passed from a parent component to a child component.
 
 Q)What are React Hooks? Can you name a few?
-=>  Allows functional components to use state & lifecycle features
-    Simplifies component logic (No need for class components)
-    Avoids using this (Easier to read & debug)
-    Improves performance by reducing unnecessary re-renders
+=> Allows functional components to use state & lifecycle features
+Simplifies component logic (No need for class components)
+Avoids using this (Easier to read & debug)
+Improves performance by reducing unnecessary re-renders
 
-      1️⃣ useState – For managing state.
-      2️⃣ useEffect – For side effects (API calls, subscriptions).
-      3️⃣ useContext – For avoiding prop drilling.
-      4️⃣ useRef – For accessing DOM elements.
-      5️⃣ useReducer – For complex state management.
+1️⃣ useState – For managing state.
+2️⃣ useEffect – For side effects (API calls, subscriptions).
+3️⃣ useContext – For avoiding prop drilling.
+4️⃣ useRef – For accessing DOM elements.
+5️⃣ useReducer – For complex state management.
 
 Q)What is the difference between useState and useReducer?
-    Both useState and useReducer are React hooks used for state management in functional components. However, useState is best for simple state updates, while useReducer is useful for managing complex state logic."
-    useState is a basic hook that allows components to store and update state directly. It's best for simple state values like numbers, booleans, or strings.
-    useReducer is useful when state logic involves multiple related values or complex updates. Instead of directly updating the state, it uses a reducer function to handle actions and return a new state.
+Both useState and useReducer are React hooks used for state management in functional components. However, useState is best for simple state updates, while useReducer is useful for managing complex state logic."
+useState is a basic hook that allows components to store and update state directly. It's best for simple state values like numbers, booleans, or strings.
+useReducer is useful when state logic involves multiple related values or complex updates. Instead of directly updating the state, it uses a reducer function to handle actions and return a new state.
 
 Q)What is the significance of key props in lists?
-=> Keys help React minimize DOM operations. If a list changes, React can match the old and new elements using the key, 
-   so it only updates what’s necessary instead of re-rendering the whole list
-   Good keys: Unique and stable. Usually an ID from your data (id or uuid).
-   Bad keys: Using an index (key={index}) is not ideal because the index can change if you add, remove, or reorder items. That can break the mapping.
+=> Keys help React minimize DOM operations. If a list changes, React can match the old and new elements using the key,
+so it only updates what’s necessary instead of re-rendering the whole list
+Good keys: Unique and stable. Usually an ID from your data (id or uuid).
+Bad keys: Using an index (key={index}) is not ideal because the index can change if you add, remove, or reorder items. That can break the mapping.
 
 Intermediate Level
 Q)What is the difference between controlled and uncontrolled components?
-=>      ➡️ Controlled Component
-        In a controlled component, React controls the form element’s value.
-        The value is bound to React state.
-        When the user types, an onChange handler updates the state, which updates the input’s value.
-        ➡️ Uncontrolled Component
-        In an uncontrolled component, the DOM itself keeps track of the value.
-        React does not directly manage the input’s current value.
-        You use a ref to read the value when needed.
+=> ➡️ Controlled Component
+In a controlled component, React controls the form element’s value.
+The value is bound to React state.
+When the user types, an onChange handler updates the state, which updates the input’s value.
+➡️ Uncontrolled Component
+In an uncontrolled component, the DOM itself keeps track of the value.
+React does not directly manage the input’s current value.
+You use a ref to read the value when needed.
 
 Q)What are Higher-Order Components (HOC)?
 =>Higher order component is react pattern which accept component as args and return new component with new props or new feature
-  it do not modify original component directly
+it do not modify original component directly
 
 Q)How does React handle forms and form validation?
 =>controlled and uncontrolled Explain
 
 Q)What is the Context API? How is it different from Redux?
 =>It build in react feature to share data globally without having to pass props manually at every Level
-  Used to avoid prop drilling
-  It is good for simple global state
-  used to share data globally like: User auth status, theme(light/dark)
-  Redux: its a external library
-         good for complex management 
-         provide way to update,debug globally
+Used to avoid prop drilling
+It is good for simple global state
+used to share data globally like: User auth status, theme(light/dark)
+Redux: its a external library
+good for complex management
+provide way to update,debug globally
 
 Q)What is Prop Drilling, and how do you avoid it?
 =>Prop Drilling happens when you have to pass data through multiple layers of components,
-  even if intermediate components don’t care about that data — they’re just passing it down.
+even if intermediate components don’t care about that data — they’re just passing it down.
 
 Q)What is the difference between useEffect and componentDidMount?
 =>componentDidMount is a lifecycle method in class-based components.
-  It runs once, after the component is rendered to the DOM.
-  Typical use: fetch data, set up subscriptions, run side effects that should only happen once.
-  useEffect is a Hook in function components.
-  It can mimic multiple lifecycle behaviors, including:componentDidMount,componentDidUpdate,componentWillUnmount
-
+It runs once, after the component is rendered to the DOM.
+Typical use: fetch data, set up subscriptions, run side effects that should only happen once.
+useEffect is a Hook in function components.
+It can mimic multiple lifecycle behaviors, including:componentDidMount,componentDidUpdate,componentWillUnmount
 
 Q)Explain React's reconciliation process.
 =>React's reconciliation process is the algorithm it uses to update the DOM efficiently when the state or props of a component change.
-  Instead of re-rendering the whole UI from scratch, React uses a virtual DOM to track changes. When something changes:
-  React creates a new virtual DOM tree.
-  It compares this new tree with the previous one using a process called diffing.
-  Based on the difference, it calculates the minimal number of changes required.
-  React then updates only those parts of the real DOM that have changed.
+Instead of re-rendering the whole UI from scratch, React uses a virtual DOM to track changes. When something changes:
+React creates a new virtual DOM tree.
+It compares this new tree with the previous one using a process called diffing.
+Based on the difference, it calculates the minimal number of changes required.
+React then updates only those parts of the real DOM that have changed.
 
 Q)What is React Router, and how do you implement dynamic routes?
-=>React Router is a standard routing library for React. It enables navigation between different views or pages in a React application without          reloading the page, by managing the URL and rendering the appropriate components.
-  It provides components like <BrowserRouter>, <Routes>, <Route>, and hooks like useNavigate and useParams to handle navigation and access route-      related data.
+=>React Router is a standard routing library for React. It enables navigation between different views or pages in a React application without reloading the page, by managing the URL and rendering the appropriate components.
+It provides components like <BrowserRouter>, <Routes>, <Route>, and hooks like useNavigate and useParams to handle navigation and access route- related data.
 Dynamic Routes:
-                    Dynamic routes are used when the path includes a variable segment, such as a user ID or product ID.
-                    
-                    Example:
-                    <Route path="/user/:id" element={<UserProfile />} />
-                    Here, :id is a dynamic segment.
-                    
-                    🧠 How to Access Dynamic Route Params:
-                    Inside the UserProfile component, you can access the id using the useParams() hook:
-                    
-                    import { useParams } from 'react-router-dom';
-                    
-                    function UserProfile() {
-                      const { id } = useParams();
-                      return <h2>User ID: {id}</h2>;
-                    }
-                    This will display User ID: 123 if the user visits /user/123.
+Dynamic routes are used when the path includes a variable segment, such as a user ID or product ID.
+
+Example:
+<Route path="/user/:id" element={<UserProfile />} />
+Here, :id is a dynamic segment.
+
+🧠 How to Access Dynamic Route Params:
+Inside the UserProfile component, you can access the id using the useParams() hook:
+
+import { useParams } from 'react-router-dom';
+
+function UserProfile() {
+const { id } = useParams() ;
+return <h2>User ID: {id}</h2> ;
+}
+This will display User ID: 123 if the user visits /user/123.
 
 Q)What is memoization in React? How does React.memo work?
 =>Memoization in React is an optimization technique used to avoid unnecessary re-renders of components by caching the result of a component or
-         function based on its inputs (props).
-  React.memo is a Higher-Order Component (HOC) that allows functional components to skip re-rendering if their props haven't changed.
-  It works like this:                  
-                      const MemoizedComponent = React.memo(MyComponent);
-                      Now, MyComponent will only re-render if its props change — based on a shallow comparison.
- 
+function based on its inputs (props).
+React.memo is a Higher-Order Component (HOC) that allows functional components to skip re-rendering if their props haven't changed.
+It works like this:
+const MemoizedComponent = React.memo(MyComponent) ;
+Now, MyComponent will only re-render if its props change — based on a shallow comparison.
+
 Q)What problem are useMemo & useCallback solving?
 =>React re-renders a component every time its parent re-renders.
-  During every render:
-    every variable is recreated
-    every object/array/function gets a new reference
-    logic/calculations re-run
+During every render:
+every variable is recreated
+every object/array/function gets a new reference
+logic/calculations re-run
 
-  This causes:
-    unnecessary expensive calculations
-    child components receiving new references → re-render unnecessarily
-    performance issues in complex UI
-    useMemo and useCallback solve this
-
+This causes:
+unnecessary expensive calculations
+child components receiving new references → re-render unnecessarily
+performance issues in complex UI
+useMemo and useCallback solve this
 
 Q)What are custom hooks? Can you give an example?
 =>explain toggel example
 
 Q)why we always have to write supper(props) in class based component while receiving props
 =>In class based component we extends React.Component class
-  so before use props we have to define props 
-  it is going to define in parent class component
-  for that we have to call parent class component constructor
-  for that we have to call supper(props) inside class constructor
-  Then with the help of this.props we can use props 
+so before use props we have to define props
+it is going to define in parent class component
+for that we have to call parent class component constructor
+for that we have to call supper(props) inside class constructor
+Then with the help of this.props we can use props
 
 Advanced Level
 Q)What is the difference between Server-Side Rendering (SSR) and Client-Side Rendering (CSR)?
 => In CSR, the browser (client) downloads a minimal HTML page, then runs JavaScript to render the content dynamically.
-      How it works:
-        User requests a web page.
-        Server responds with a basic HTML + JavaScript bundle.
-        Browser runs JavaScript (usually React, Angular, etc.) to build the UI.
-        Content is shown after JS is executed
-   In SSR, the server renders the full HTML content of the page and sends it to the browser, which just displays it.
-      How it works:
-        User requests a web page.
-        Server processes the request and sends fully rendered HTML.
-        Browser displays content immediately.
-        JavaScript hydrates the page to make it interactive.
+How it works:
+User requests a web page.
+Server responds with a basic HTML + JavaScript bundle.
+Browser runs JavaScript (usually React, Angular, etc.) to build the UI.
+Content is shown after JS is executed
+In SSR, the server renders the full HTML content of the page and sends it to the browser, which just displays it.
+How it works:
+User requests a web page.
+Server processes the request and sends fully rendered HTML.
+Browser displays content immediately.
+JavaScript hydrates the page to make it interactive.
 
 Q)How does React Fiber improve performance?
 =>React Fiber is a complete rewrite of the React core algorithm introduced in React 16. It was designed to improve performance, especially for complex UI rendering, animation, and responsive interactions.
-  1. Incremental Rendering
-      Old React: Rendering was synchronous and blocking — once it started rendering, it had to finish.
-      Fiber: Breaks rendering into small units of work (called "fibers") that can be paused and resumed
-  2. Prioritized Updates
-      Fiber assigns priority levels to updates (e.g., animation > data fetch).
-      Important updates (like typing or clicking) can interrupt low-priority work.
-  3. Concurrency Support
-      React Fiber is designed for concurrent rendering, a foundation for features like useTransition, 
-      startTransition, and React Concurrent Mode.
-  4. Improved Scheduling
-      Fiber uses a cooperative scheduling model.
-      It can yield control back to the browser to handle higher-priority tasks like animations or user input.
+1. Incremental Rendering
+Old React: Rendering was synchronous and blocking — once it started rendering, it had to finish.
+Fiber: Breaks rendering into small units of work (called "fibers") that can be paused and resumed
+2. Prioritized Updates
+Fiber assigns priority levels to updates (e.g., animation > data fetch).
+Important updates (like typing or clicking) can interrupt low-priority work.
+3. Concurrency Support
+React Fiber is designed for concurrent rendering, a foundation for features like useTransition,
+startTransition, and React Concurrent Mode.
+4. Improved Scheduling
+Fiber uses a cooperative scheduling model.
+It can yield control back to the browser to handle higher-priority tasks like animations or user input.
 
-      Lifecycle with Fiber
-          Two main phases:
-          1. Render Phase (can be paused)
-              Calculate changes
-              Prepare the work
-          2. Commit Phase (cannot be paused)
-              Apply changes to DOM
-
-
+Lifecycle with Fiber
+Two main phases:
+1. Render Phase (can be paused)
+Calculate changes
+Prepare the work
+2. Commit Phase (cannot be paused)
+Apply changes to DOM
 
 Q)What is concurrent mode in React?
 =>-Concurrent Mode is an optional advanced feature in React (enabled by React Fiber) that allows React to work on multiple tasks at the same time,
-    making apps more responsive and interruptible.
-  -Concurrent Mode lets React prepare multiple versions of the UI in the background and decide which one to show — without blocking the main thread.
-   How to Use Concurrent Features
-    You don't enable "Concurrent Mode" like a switch anymore. Instead, it's enabled automatically when you use concurrent features like:
-    startTransition()
-    useTransition()
-    useDeferredValue()
-    Suspense + lazy
- 
+making apps more responsive and interruptible.
+-Concurrent Mode lets React prepare multiple versions of the UI in the background and decide which one to show — without blocking the main thread.
+How to Use Concurrent Features
+You don't enable "Concurrent Mode" like a switch anymore. Instead, it's enabled automatically when you use concurrent features like:
+startTransition()
+useTransition()
+useDeferredValue()
+Suspense + lazy
+
 Q)How do you optimize performance in a React application?
 =>React provides multiple ways to optimize performance, especially for large applications. Some common techniques are:
-    Avoid unnecessary re-renders
-        Use React.memo to memoize functional components.
-        Use useCallback to memoize callback functions.
-        Use useMemo to memoize expensive calculations.
-    Code Splitting and Lazy Loading
-        Use React.lazy + Suspense to load components only when needed.
-        Split bundles using tools like Webpack or Vite.
-    Virtualization for large lists
-        Use libraries like react-window or react-virtualized to render only visible items instead of the entire list.
-    Optimize Context and State Management
-        Keep state as local as possible.
-        Avoid prop drilling using Context or Redux.
-        Split contexts if they cause too many re-renders.
-    Use Concurrent Features (React 18+)
-        startTransition / useTransition to defer non-urgent updates.
-        useDeferredValue for smoother typing in search inputs.
-    Efficient DOM Updates
-        eact already optimizes with the Virtual DOM, but you can further reduce costly DOM operations by batching state updates.
-    Image and Asset Optimization
-        Use compressed images, SVGs, lazy loading for images (loading="lazy").
-        Serve assets via CDN.
-    Memoization of Selectors (Redux)
-        Use reselect or RTK selectors to prevent unnecessary recalculations.
+Avoid unnecessary re-renders
+Use React.memo to memoize functional components.
+Use useCallback to memoize callback functions.
+Use useMemo to memoize expensive calculations.
+Code Splitting and Lazy Loading
+Use React.lazy + Suspense to load components only when needed.
+Split bundles using tools like Webpack or Vite.
+Virtualization for large lists
+Use libraries like react-window or react-virtualized to render only visible items instead of the entire list.
+Optimize Context and State Management
+Keep state as local as possible.
+Avoid prop drilling using Context or Redux.
+Split contexts if they cause too many re-renders.
+Use Concurrent Features (React 18+)
+startTransition / useTransition to defer non-urgent updates.
+useDeferredValue for smoother typing in search inputs.
+Efficient DOM Updates
+eact already optimizes with the Virtual DOM, but you can further reduce costly DOM operations by batching state updates.
+Image and Asset Optimization
+Use compressed images, SVGs, lazy loading for images (loading="lazy").
+Serve assets via CDN.
+Memoization of Selectors (Redux)
+Use reselect or RTK selectors to prevent unnecessary recalculations.
 
 Q)Explain how React works with Webpack and Babel.
 =>React itself is just a JavaScript library, but modern React applications use Webpack and Babel in the build process to make development easier.
-  Babel
-    React uses JSX, which browsers don’t understand directly.
-    Babel is a JavaScript compiler that transpiles JSX into plain JavaScript (React.createElement() calls).
-    It also converts modern ES6+ code (like arrow functions, async/await) into older JavaScript that browsers can run.
-  Webpack
-    Webpack is a module bundler.
-    It takes all React components, CSS, images, and other files and bundles them into a single file (or smaller chunks).
-    It supports loaders (like babel-loader) to process files before bundling.
-    It also handles code splitting (lazy loading) for better performance.
-  How they work together with React
-    When you write React code (JSX + ES6+), Babel transpiles it into plain JavaScript.
-    Webpack bundles everything (including Babel output, CSS, images) into optimized files.
-    The browser then runs this bundled JavaScript to render your React app.
+Babel
+React uses JSX, which browsers don’t understand directly.
+Babel is a JavaScript compiler that transpiles JSX into plain JavaScript (React.createElement() calls).
+It also converts modern ES6+ code (like arrow functions, async/await) into older JavaScript that browsers can run.
+Webpack
+Webpack is a module bundler.
+It takes all React components, CSS, images, and other files and bundles them into a single file (or smaller chunks).
+It supports loaders (like babel-loader) to process files before bundling.
+It also handles code splitting (lazy loading) for better performance.
+How they work together with React
+When you write React code (JSX + ES6+), Babel transpiles it into plain JavaScript.
+Webpack bundles everything (including Babel output, CSS, images) into optimized files.
+The browser then runs this bundled JavaScript to render your React app.
 
 What are synthetic events in React?
+=>A Synthetic Event is an object provided by React that normalizes native browser
+events so they behave the same in every browser.
 
 How does React handle error boundaries?
 
@@ -268,293 +265,243 @@ Explain how reconciliation works with keys in React.
 
 How does React handle accessibility (a11y)?
 
-
 **********************************YOUTUBE***************************************
-create app 
-  -npm create vite@latest app-name -- --template react
-Add tailwind 
-  -npm install -D tailwindcss postcss autoprefixer
-  -build tailwind.css
-    -npx tailwindcss init
-      inside config files
-        1)content: include what file it should track
-      -now add those 3 thing inside app.css
-        1)@tailwind base 2)@tailwind component 3)tailwind utilities 
+create app
+-npm create vite@latest app-name -- --template react
+Add tailwind
+-npm install -D tailwindcss postcss autoprefixer
+-build tailwind.css
+-npx tailwindcss init
+inside config files
+1)content: include what file it should track
+-now add those 3 thing inside app.css
+1)@tailwind base 2)@tailwind component 3)tailwind utilities
 
 Project structure
-  -Head
-   Body
-    Sidebar
-      MenuItem
-    MainContainer
-      ButtonsList
-        Button
-      VideoContainer
-        VideoCard
+-Head
+Body
+Sidebar
+MenuItem
+MainContainer
+ButtonsList
+Button
+VideoContainer
+VideoCard
 
 #React RCA
 
-  1️⃣ First: What problem RSC is solving (internals view)
+1️⃣ First: What problem RSC is solving (internals view)
 
-  Traditional React apps had two bad choices:
-  ❌ CSR (Client Side Rendering)
-    Send all JS to browser
-    Browser fetches data
-    Slow first paint
-    Large JS bundle
-  ❌ SSR (Server Side Rendering)
-    Server renders HTML
-    Browser still downloads full JS
-    Hydration cost
-    Duplicate work (server + client)
-  ✅ RSC goal
-  Send UI + data without sending JS logic to the browser
-  RSC sends React elements, not HTML, not JS logic.
+Traditional React apps had two bad choices:
+❌ CSR (Client Side Rendering)
+Send all JS to browser
+Browser fetches data
+Slow first paint
+Large JS bundle
+❌ SSR (Server Side Rendering)
+Server renders HTML
+Browser still downloads full JS
+Hydration cost
+Duplicate work (server + client)
+✅ RSC goal
+Send UI + data without sending JS logic to the browser
+RSC sends React elements, not HTML, not JS logic.
 
-  2️⃣ Key Concept: Server Components are NEVER shipped to browser
-  This is the most important line to remember:
-  Server Component code does not exist in the client bundle
-    So:
-    No hooks like useState
-    No event handlers
-    No browser APIs
-    They run once on the server.
+2️⃣ Key Concept: Server Components are NEVER shipped to browser
+This is the most important line to remember:
+Server Component code does not exist in the client bundle
+So:
+No hooks like useState
+No event handlers
+No browser APIs
+They run once on the server.
 
-  3️⃣ How RSC execution actually happens (timeline)
-  Let’s walk through a request step by step.
+3️⃣ How RSC execution actually happens (timeline)
+Let’s walk through a request step by step.
 
-  4️⃣ Step-by-Step RSC Flow (Behind the Scenes)
-    📌 Step 1: Browser requests a route
-      GET /dashboard
+4️⃣ Step-by-Step RSC Flow (Behind the Scenes)
+📌 Step 1: Browser requests a route
+GET /dashboard
 
-    📌 Step 2: Server starts rendering React tree
+📌 Step 2: Server starts rendering React tree
 
-      React starts rendering Server Components first.
+React starts rendering Server Components first.
 
-      Example:
-      <Page>  ← server
-        <Header /> ← server
-        <UserList /> ← server
-        <Counter /> ← client
-      </Page>
+Example:
+<Page> ← server
+<Header /> ← server
+<UserList /> ← server
+<Counter /> ← client
+</Page>
 
-    📌 Step 3: Server Components execute normally
-      On the server:
-      const users = await db.user.findMany()
-      ✔ DB access
-      ✔ Secrets allowed
-      ✔ Filesystem allowed
+📌 Step 3: Server Components execute normally
+On the server:
+const users = await db.user.findMany()
+✔ DB access
+✔ Secrets allowed
+✔ Filesystem allowed
 
-    📌 Step 4: Client Components are NOT executed on server
-      Instead:
-      React inserts placeholders
-      Marks where Client Components go
-      So React says:
-      “I will render this later in the browser”
+📌 Step 4: Client Components are NOT executed on server
+Instead:
+React inserts placeholders
+Marks where Client Components go
+So React says:
+“I will render this later in the browser”
 
-  5️⃣ The Flight Protocol (Most Important Internals)
-    React does NOT send HTML for RSC.
-    It sends a binary/JSON-like stream called:🛫 React Flight Payload
-    This payload contains:
-      Component tree structure
-      Serialized props
-      Component references
-      Instructions for client rendering
-      Example (simplified):
-      {
-        "type": "UserList",
-        "props": {
-          "users": [
-            { "id": 1, "name": "Suraj" }
-          ]
-        }
-      }
+5️⃣ The Flight Protocol (Most Important Internals)
+React does NOT send HTML for RSC.
+It sends a binary/JSON-like stream called:🛫 React Flight Payload
+This payload contains:
+Component tree structure
+Serialized props
+Component references
+Instructions for client rendering
+Example (simplified):
+{
+"type": "UserList",
+"props": {
+"users": [
+{ "id": 1, "name": "Suraj" }
+]
+}
+}
 
-      🚫 No JS logic
-      🚫 No functions
-      🚫 No closures
+🚫 No JS logic
+🚫 No functions
+🚫 No closures
 
-  6️⃣ Streaming: Why RSC is fast
-    React streams chunks as soon as they’re ready.
-    Header → streamed
-    Sidebar → streamed
-    UserList → streamed
-    Footer → streamed
+6️⃣ Streaming: Why RSC is fast
+React streams chunks as soon as they’re ready.
+Header → streamed
+Sidebar → streamed
+UserList → streamed
+Footer → streamed
 
-    Browser starts rendering before everything is ready.
-    This is why RSC feels instant.
+Browser starts rendering before everything is ready.
+This is why RSC feels instant.
 
-  7️⃣ Client receives Flight payload (not HTML)
-    Browser receives:
-      React tree description
-      Serialized data
-    Then:
-      Client React runtime reconstructs the UI
-      Client Components get hydrated
+7️⃣ Client receives Flight payload (not HTML)
+Browser receives:
+React tree description
+Serialized data
+Then:
+Client React runtime reconstructs the UI
+Client Components get hydrated
 
-  8️⃣ Hydration is PARTIAL (Big improvement)
-    In SSR:
-      Entire page is hydrated
-    In RSC:
-     Only Client Components hydrate
-    Example:
-      <h1>Users</h1>  ❌ no hydration
-      <ul>...</ul>   ❌ no hydration
-      <button />     ✅ hydrated
-    Result:
-      Much less JS
-      Faster Time to Interactive
+8️⃣ Hydration is PARTIAL (Big improvement)
+In SSR:
+Entire page is hydrated
+In RSC:
+Only Client Components hydrate
+Example:
+<h1>Users</h1> ❌ no hydration
+<ul>...</ul> ❌ no hydration
+<button /> ✅ hydrated
+Result:
+Much less JS
+Faster Time to Interactive
 
-  9️⃣ Why Server Components can import Client Components
-    This works:
-    // server
-      import Counter from './Counter'
-      Why?
-      Server just references it
-      Client loads it later
-      This does NOT work:
-    // client
-      import ServerComponent from './ServerComponent'
-      Why?
-      Browser cannot execute server-only code
+9️⃣ Why Server Components can import Client Components
+This works:
+// server
+import Counter from './Counter'
+Why?
+Server just references it
+Client loads it later
+This does NOT work:
+// client
+import ServerComponent from './ServerComponent'
+Why?
+Browser cannot execute server-only code
 
-  🔟 Data Fetching Deduplication (Hidden Benefit)
-    React caches fetches during a single request.
-    await fetch('/api/user')
-    await fetch('/api/user') // deduped
-    Only one request is made.
+🔟 Data Fetching Deduplication (Hidden Benefit)
+React caches fetches during a single request.
+await fetch('/api/user')
+await fetch('/api/user') // deduped
+Only one request is made.
 
-  1️⃣1️⃣ Why RSC is NOT SSR (Important Interview Point)
-  SSR	                                RSC
-  Sends HTML            	        Sends React tree
-  Hydration everywhere	          Partial hydration
-  Duplicate logic       	        Single execution
-  No backend access after render	Full backend access
+1️⃣1️⃣ Why RSC is NOT SSR (Important Interview Point)
+SSR	 RSC
+Sends HTML 	 Sends React tree
+Hydration everywhere	 Partial hydration
+Duplicate logic 	 Single execution
+No backend access after render	Full backend access
 
 #rENDERING ways
 1. Client Side Rendering (CSR)
-  =>Browser → request page
-    Server → sends empty HTML + JS bundle
-    Browser → downloads JS
-    React renders UI
+=>Browser → request page
+Server → sends empty HTML + JS bundle
+Browser → downloads JS
+React renders UI
 2. Server Side Rendering (SSR)
 =>Browser → request page
-  Server → render React
-  Server → send HTML
-  Browser → hydrate React
-      Example:
-      export async function getServerSideProps() {
-      const res = await fetch("https://api.example.com/users");
-      const users = await res.json();
+Server → render React
+Server → send HTML
+Browser → hydrate React
+Example:
+export async function getServerSideProps() {
+const res = await fetch("https://api.example.com/users");
+const users = await res.json() ;
 
-      return { props: { users } };
-    }
+return { props: { users } } ;
+}
 3. Static Site Generation (SSG)
 =>Build time → render pages
-  Server → send static HTML
-  Browser → show page
-  No hydration needed
-      Example:
-      export async function getStaticProps() {
-      const res = await fetch("https://api.example.com/users");
-      const users = await res.json();
+Server → send static HTML
+Browser → show page
+No hydration needed
+Example:
+export async function getStaticProps() {
+const res = await fetch("https://api.example.com/users");
+const users = await res.json() ;
 
-      return { props: { users } };
-    }
+return { props: { users } } ;
+}
 4. Incremental Static Regeneration (ISR)
 =>Updates static pages without rebuilding the entire site.
-      Example:
-      export async function getStaticProps() {
-      const res = await fetch("https://api.example.com/users");
-      const users = await res.json();
+Example:
+export async function getStaticProps() {
+const res = await fetch("https://api.example.com/users");
+const users = await res.json() ;
 
-      return { props: { users }, revalidate: 60 };
-    }
+return { props: { users }, revalidate: 60 } ;
+}
 #Error boundaries
-=>Error Boundary is used to catch runtime errors in UI components and 
-  show a fallback UI instead of crashing the whole app.
-  1. Error Boundary in Next.js (App Router)
-  You can create an error.tsx file inside a route folder.
-            app/
-          ├── dashboard/
-          │   ├── page.tsx
-          │   └── error.tsx
-  How it works
-  If any error occurs in dashboard/page.tsx or its children, this file will render.
-  error → contains the thrown error.
-  reset() → re-tries rendering the component.
+=>Error Boundary is used to catch runtime errors in UI components and
+show a fallback UI instead of crashing the whole app.
+1. Error Boundary in Next.js (App Router)
+You can create an error.tsx file inside a route folder.
+app/
+├── dashboard/
+│ ├── page.tsx
+│ └── error.tsx
+How it works
+If any error occurs in dashboard/page.tsx or its children, this file will render.
+error → contains the thrown error.
+reset() → re-tries rendering the component.
 
-  What is Event loop ? How it's useful
+What is Event loop ? How it's useful
 What is closure ? Example in js
 Hoisting in js benefits and drawbacks
 Which things introduce in ES6, ES7 and ES8
 What is promises ?
 rest ans spred operator
 
-Difference between promises , callback, async await 
+*******************REDUX****************
+What is Redux
+=>Redux is a state management library used to manage global data in an application.
+1️⃣ Store
+The central place where all data is stored.
+2️⃣ Action
+Actions describe what happened.
+3️⃣ Reducer
+Reducer updates the state.
 
-Promise.all vs promise.allSettle
-
-Cluster vs fork
-
-Function vs arrow function
-
-Which standards you follow for code like quality, reviews
-
-What are the predefined modules in node
-
-Express vs nest
-
-Nodejs architecture with request management 
-
-Buffer in Nodejs
-
-Streams in Nodejs
-
-How you manage security in Nodejs app
-
-How CORS error occurs?
-
-Micro task vs Macro task in js
-
-Callback hell ?
-
-Let var const difference 
-
-What is typeORM benefits of it
-
-What is decorator in nestjs
-
-Dependency injection in nest
-
-What is Middleware. Difference between Middleware vs interceptor 
-
-NestJs request life cycle
-
-What is scaling. Horizontal vs vertical scaling
-
-Difference between sql and nosql database
-
-How to handle database query performance 
-
-Find vs filter in js
-for loop , for each loop
-
-Which is best for data fetch in parallel execution 
-
-What is MVC
-
-ORM  vs ODM in database 
-
-Difference between DDL DML TCL
-
-What is Sharding in database 
-
-How to optimize database
-
-Key type in slq primary, foreign etc
-
-What is trigger, stored procedure in DB
+Redux Toolkit (RTK) is the official recommended way to write Redux.
+Redux Toolkit reduces:
+boilerplate code
+complex setup
+manual immutable updates
 
 REACT element -create and clone element
 how to reduce bundle size

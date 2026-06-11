@@ -1,0 +1,38 @@
+
+What are data types in JavaScript?
+Primitive vs Non-primitive types
+What is typeof operator?
+    console.log(typeof 10);           // "number"
+    console.log(typeof "hello");      // "string"
+    console.log(typeof true);         // "boolean"
+    console.log(typeof undefined);    // "undefined"
+    console.log(typeof null);         // "object" ❗ (known bug)
+    console.log(typeof {});           // "object"
+    console.log(typeof []);           // "object"
+    console.log(typeof function(){}); // "function"
+
+What is NaN?
+    typeof NaN // "number"
+    console.log(NaN === NaN); // false
+    
+Difference between null and undefined
+    🟡 undefined
+    📌 Meaning:
+    👉 A variable has been declared but not assigned a value
+    🔵 null
+    📌 Meaning:
+    👉 A variable is intentionally assigned "no value"
+
+Truthy vs Falsy values
+What is type coercion?
+What are higher-order functions?
+    A higher-order function is a function that:
+    👉 takes another function as an argument OR
+    👉 returns a function
+
+Spread vs rest operator
+What is prototype?
+Prototype chain
+What is inheritance in JS?
+Class vs prototype-based inheritance
+__proto__ vs prototype
