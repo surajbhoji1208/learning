@@ -1,6 +1,4 @@
-
 https://codeinterview.io/DEMO-BJSNMWYGTF
-
 
 ✅ 1. Angular Basics (10 questions)
 What is Angular and how is it different from AngularJS?
@@ -12,190 +10,200 @@ Class (TypeScript) → contains the logic and data.
 Metadata (Decorator @Component) → tells Angular how to process the component.
 
 What is the role of NgModule in Angular?
-=>NgModule plays a central role in organizing an application into cohesive blocks of functionality. 
-  It's a decorator that defines a module, which is a container for a group of related components, directives, pipes, and services.
+=>NgModule plays a central role in organizing an application into cohesive blocks of functionality.
+It's a decorator that defines a module, which is a container for a group of related components, directives, pipes, and services.
 
 What is the Angular lifecycle hook? Name a few important ones.
-  -In Angular, lifecycle hooks are special methods that allow you to tap into key moments in a component's or directive’s lifecycle 
-   Most Commonly Used Hooks
-    ngOnInit() — for initialization logic.
-    ngOnDestroy() — for teardown/cleanup.
-    ngOnChanges() — for responding to input changes.
-    ngAfterViewInit() — for DOM-dependent logic after view init.
+-In Angular, lifecycle hooks are special methods that allow you to tap into key moments in a component's or directive’s lifecycle
+Most Commonly Used Hooks
+ngOnInit() — for initialization logic.
+ngOnDestroy() — for teardown/cleanup.
+ngOnChanges() — for responding to input changes.
+ngAfterViewInit() — for DOM-dependent logic after view init.
 
 How do you bootstrap an Angular application?
-  =>Bootstrapping an Angular application means initializing and loading the root module and component into the browser
-    1. Main Entry Point – main.ts
-      This is the starting point of any Angular app.
+=>Bootstrapping an Angular application means initializing and loading the root module and component into the browser
+1. Main Entry Point – main.ts
+This is the starting point of any Angular app.
 
 What is the difference between @Component, @NgModule, and @Injectable?
 =>In Angular, these are decorators used to define the role of a class:
-    @Component:
-      Marks a class as an Angular component.
-      Controls a piece of UI using a selector, template, and styles.
-      Example: @Component({ selector: 'app-home', templateUrl: 'home.html' })
-    @NgModule:
-      Declares an Angular module that groups components, directives, and services.
-      Handles app structure and configuration.
-      Defines what gets bootstrapped, imported, and exported.
-      Example: @NgModule({ declarations: [...], imports: [...] })
-    @Injectable:
-      Marks a class as injectable, typically for services.
-      Allows Angular's dependency injection system to provide it.
-      Example: @Injectable({ providedIn: 'root' })
+@Component:
+Marks a class as an Angular component.
+Controls a piece of UI using a selector, template, and styles.
+Example: @Component({ selector: 'app-home', templateUrl: 'home.html' })
+@NgModule:
+Declares an Angular module that groups components, directives, and services.
+Handles app structure and configuration.
+Defines what gets bootstrapped, imported, and exported.
+Example: @NgModule({ declarations: [...], imports: [...] })
+@Injectable:
+Marks a class as injectable, typically for services.
+Allows Angular's dependency injection system to provide it.
+Example: @Injectable({ providedIn: 'root' })
 
 What is the difference between BrowserModule and CommonModule?
-=>-BrowserModule is used only in the root module (typically AppModule) and is required to run the Angular app in the browser. It provides services   
-   essential for rendering and bootstrapping, and it also re-exports CommonModule.
-  -On the other hand, CommonModule is used in feature modules or lazy-loaded modules. It provides common directives like ngIf, ngFor, and ngSwitch, 
-   which are not available by default in those modules.
+=>-BrowserModule is used only in the root module (typically AppModule) and is required to run the Angular app in the browser. It provides services
+essential for rendering and bootstrapping, and it also re-exports CommonModule.
+-On the other hand, CommonModule is used in feature modules or lazy-loaded modules. It provides common directives like ngIf, ngFor, and ngSwitch,
+which are not available by default in those modules.
 
 What is a template in Angular?
-=>In Angular, a template is the HTML that defines the view of a component. It contains the layout and markup, along with Angular-specific syntax 
-  like directives, bindings, and pipes to control how data is displayed and interacted with in the UI.
+=>In Angular, a template is the HTML that defines the view of a component. It contains the layout and markup, along with Angular-specific syntax
+like directives, bindings, and pipes to control how data is displayed and interacted with in the UI.
 
 How do you use property binding and event binding in Angular?
 =>property binding is used to bind data from the component to the view, and event binding is used to respond to user actions in the view.
-  -Property Binding ([property]="expression"):<img [src]="imageUrl">
-  -Event Binding ((event)="handler()"):<button (click)="onClick()">Click Me</button>
+-Property Binding ([property]="expression"):<img [src]="imageUrl">
+-Event Binding ((event)="handler()"):<button (click)="onClick()">Click Me</button>
 
 What are pipes in Angular? How do you create a custom pipe?
-=> a pipe is a way to transform data before displaying it in the template. Pipes are used with the | symbol and are useful for things like 
-   formatting dates, numbers, strings, etc.
-    @Pipe({ name: 'capitalize' })
-    export class CapitalizePipe implements PipeTransform {
-      transform(value: string): string {
-        if (!value) return '';
-        return value[0].toUpperCase() + value.slice(1).toLowerCase();
-      }
-    }
-
+=> a pipe is a way to transform data before displaying it in the template. Pipes are used with the | symbol and are useful for things like
+formatting dates, numbers, strings, etc.
+@Pipe({ name: 'capitalize' })
+export class CapitalizePipe implements PipeTransform {
+transform(value: string): string {
+if (!value) return '';
+return value[0].toUpperCase() + value.slice(1).toLowerCase() ;
+}
+}
 
 ✅ 2. Components and Templates (10 questions)
 How do you create a component using Angular CLI?
 =>ng g c name
 
 What are the different ways to pass data to a component?
-                  =>🔹 1. @Input() — Parent to Child Component
-                          Used to pass data from a parent component to a child using property binding.
-                          
-                          Parent Template:
-                          <app-child [message]="parentMessage"></app-child>
-                          @Input() message: string;
-                   🔹 2. @Output() — Child to Parent Communication
-                          Used to send data from child to parent via EventEmitter.
-                          
-                          Child Component:
-                          @Output() notify = new EventEmitter<string>();
-                          
-                          someMethod() {
-                            this.notify.emit('Data from child');
-                          }
-                          Parent Template:
-                  <app-child (notify)="handleNotify($event)"></app-child>
-                  🔹 3. Service with Observable/Subject
-                          Used to share data between unrelated components (e.g., siblings or across the app) via a shared service.
-                          
-                          @Injectable({ providedIn: 'root' })
-                          export class DataService {
-                            private data = new BehaviorSubject<string>('initial');
-                            currentData = this.data.asObservable();
-                          
-                            updateData(newValue: string) {
-                              this.data.next(newValue);
-                            }
-                          }
-                          Components can subscribe to currentData and get updates.
-                          
-                  🔹 4. Router Parameters / Query Params
-                              Data passed through Angular routing.
-                              
-                              // Route config
-                              { path: 'user/:id', component: UserComponent }
-                              
-                              // Accessing in component
-                              this.route.snapshot.params['id'];
-                  🔹 5. Template Reference Variables
-                            Passing a DOM element or component reference using #ref.
-                            
-                            <input #myInput>
-                            <app-child [inputElement]="myInput"></app-child>
+=>🔹 1. @Input() — Parent to Child Component
+Used to pass data from a parent component to a child using property binding.
+
+Parent Template:
+<app-child [message]="parentMessage"></app-child>
+@Input() message: string ;
+🔹 2. @Output() — Child to Parent Communication
+Used to send data from child to parent via EventEmitter.
+
+Child Component:
+@Output() notify = new EventEmitter<string>() ;
+
+someMethod() {
+this.notify.emit('Data from child');
+}
+Parent Template:
+<app-child (notify)="handleNotify($event)"></app-child>
+🔹 3. Service with Observable/Subject
+Used to share data between unrelated components (e.g., siblings or across the app) via a shared service.
+
+@Injectable({ providedIn: 'root' })
+export class DataService {
+private data = new BehaviorSubject<string>('initial');
+currentData = this.data.asObservable() ;
+
+updateData(newValue: string) {
+this.data.next(newValue) ;
+}
+}
+Components can subscribe to currentData and get updates.
+
+🔹 4. Router Parameters / Query Params
+Data passed through Angular routing.
+
+// Route config
+{ path: 'user/:id', component: UserComponent }
+
+// Accessing in component
+this.route.snapshot.params['id'];
+🔹 5. Template Reference Variables
+Passing a DOM element or component reference using #ref.
+
+<input                                           #myInput>
+<app-child [inputElement]="myInput"></app-child>
 
 What is @Input() and @Output() in Angular?
 
 How do you use ng-content and content projection?
 =>which means inserting content from a parent component into a child component's template
-        Parent Component:
-          <app-card>
-            <p>This is projected content!</p>
-          </app-card>
-        Child Component (app-card):
-          <div class="card">
-            <ng-content></ng-content>
-          </div>
+Parent Component:
+<app-card>
+<p>This is projected content!</p>
+</app-card>
+Child Component (app-card):
+<div class="card">
+<ng-content></ng-content>
+</div>
 
 What is a smart (container) vs dumb (presentational) component?
 =>🔹 Smart (Container) Component:
-      Handles business logic, data fetching, and state management
-      Knows how to get the data
-      Passes data to child (dumb) components via @Input()
-      Handles events from child components via @Output()
-      Typically connected to services, API calls, or the store
-  🔹 Dumb (Presentational) Component:
-      Only responsible for displaying data (UI)
-      Gets data via @Input() and emits events via @Output()
-      Doesn’t know where the data comes from
-      Easier to test and reuse
-
+Handles business logic, data fetching, and state management
+Knows how to get the data
+Passes data to child (dumb) components via @Input()
+Handles events from child components via @Output()
+Typically connected to services, API calls, or the store
+🔹 Dumb (Presentational) Component:
+Only responsible for displaying data (UI)
+Gets data via @Input() and emits events via @Output()
+Doesn’t know where the data comes from
+Easier to test and reuse
 
 What is ViewChild() and ContentChild()? When would you use each?
 =>
-    🔹 @ViewChild()
-      -Used to get a reference to a child element, component, or directive that is part of the same component's template 
-      -You use this when you need to call methods or access properties of a child component or DOM element declared in your template.
-      <!-- app.component.html -->
-      <app-child #childRef></app-child>'
-      <!-- app.component.ts -->
-      @ViewChild('childRef') childComponent: ChildComponent;
-  🔹 @ContentChild()
-    -Used to access projected content passed from a parent into a child component using <ng-content>.
-    -This is useful when you're building reusable components and want to interact with content projected via ng-content.
-    <!-- Parent component -->
-    <app-card>
-      <p #projectedContent>This is content from parent</p>
-    </app-card>
-    // app-card.component.ts
-    @ContentChild('projectedContent') content: ElementRef;
+🔹 @ViewChild()
+-Used to get a reference to a child element, component, or directive that is part of the same component's template
+-You use this when you need to call methods or access properties of a child component or DOM element declared in your template.
+<!-- app.component.html -->
+<app-child #childRef></app-child>'
+<!-- app.component.ts -->
+@ViewChild('childRef') childComponent: ChildComponent ;
+🔹 @ContentChild()
+-Used to access projected content passed from a parent into a child component using <ng-content>.
+-This is useful when you're building reusable components and want to interact with content projected via ng-content.
+<!-- Parent component -->
+<app-card>
+<p                                                                                                                              #projectedContent>This is content from parent</p>
+</app-card>
+// app-card.component.ts
+@ContentChild('projectedContent') content: ElementRef ;
+
+What is ng-template?
+=> A hidden Angular template that is not rendered until Angular explicitly creates a view from it.
+
+What is TemplateRef?
+=> A reference to an Angular template (ng-template) that can be instantiated later.
+
+What is ViewContainerRef?
+=> A container used to insert, remove, and manage views dynamically.
+
+Why are TemplateRef and ViewContainerRef used together?
+=> TemplateRef contains the template and ViewContainerRef renders that template into the DOM.
 
 What is the difference between template reference variable and ViewChild()?
-Feature	                  Template Ref Variable      	@ViewChild()
-Defined in  	            HTML template	            TypeScript class
-Accessiblein	            Template only            	Component class (TS)
-Lifecycle availability	  Immediately	              After ngAfterViewInit()
-Use case	                Simple access (e.g., values)	Complex access (methods, properties)
+Feature	 Template Ref Variable 	@ViewChild()
+Defined in 	 HTML template	 TypeScript class
+Accessiblein	 Template only 	Component class (TS)
+Lifecycle availability	 Immediately	 After ngAfterViewInit()
+Use case	 Simple access (e.g., values)	Complex access (methods, properties)
 
 How can you create a dynamic component?
-=>In Angular, you can create a dynamic component at runtime using the ViewContainerRef and ComponentFactoryResolver or with the newer 
-  createComponent() API. This is useful when you want to render components based on user input, configurations, or conditions.
+=>In Angular, you can create a dynamic component at runtime using the ViewContainerRef and ComponentFactoryResolver or with the newer
+createComponent() API. This is useful when you want to render components based on user input, configurations, or conditions.
 
 ✅ 3. Directives (8 questions)
 What are directives in Angular?
 => directives are special classes that add behavior or modify the structure of elements in the DOM. They are used to extend HTML with custom logic.
 
-          🔹 Types of Directives:
-          Component
-          Technically a directive with a template.
-          Example: @Component({...})
-          
-          Structural Directives
-          Change the layout of the DOM by adding or removing elements.
-          Prefix: usually *
-          Examples: *ngIf, *ngFor, *ngSwitch
-          
-          Attribute Directives
-          Change the appearance or behavior of an existing element.
-          Applied like regular attributes.
-          Example: ngClass, ngStyle, or custom directives
+🔹 Types of Directives:
+Component
+Technically a directive with a template.
+Example: @Component({...})
+
+Structural Directives
+Change the layout of the DOM by adding or removing elements.
+Prefix: usually *
+Examples: *ngIf, *ngFor, *ngSwitch
+
+Attribute Directives
+Change the appearance or behavior of an existing element.
+Applied like regular attributes.
+Example: ngClass, ngStyle, or custom directives
 
 Difference between structural and attribute directives?
 
@@ -207,32 +215,31 @@ How do you create a custom directive?
 ✅ 4. Forms (8 questions)
 What is the difference between reactive and template-driven forms?
 =>
-  🔹 1. Template-Driven Forms
-  Form logic is written in the template using directives like ngModel.
-      -Suitable for simple forms 
-      -Uses two-way data binding      
-      -Less code in the TypeScript file      
-      -Asynchronous and declarative      
-      -Requires FormsModule      
-        Example:
-        <form #form="ngForm">
-          <input name="email" ngModel required>
-        </form>
-  🔹 2. Reactive Forms
-  Form is defined in the TypeScript class, offering more control and predictability.
-  Suitable for complex and dynamic forms
-  Uses explicit form models (FormGroup, FormControl, FormArray)
-  More scalable, testable, and synchronous
-  Requires ReactiveFormsModule
+🔹 1. Template-Driven Forms
+Form logic is written in the template using directives like ngModel.
+-Suitable for simple forms
+-Uses two-way data binding
+-Less code in the TypeScript file
+-Asynchronous and declarative
+-Requires FormsModule
+Example:
+<form #form="ngForm">
+<input name="email" ngModel required>
+</form>
+🔹 2. Reactive Forms
+Form is defined in the TypeScript class, offering more control and predictability.
+Suitable for complex and dynamic forms
+Uses explicit form models (FormGroup, FormControl, FormArray)
+More scalable, testable, and synchronous
+Requires ReactiveFormsModule
 
-    Example:
-    form = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email])
-    });
-    <form [formGroup]="form">
-      <input formControlName="email">
-    </form>
-
+Example:
+form = new FormGroup({
+email: new FormControl('', [Validators.required, Validators.email])
+}) ;
+<form [formGroup]="form">
+<input formControlName="email">
+</form>
 
 How do you create and validate reactive forms?
 => you can create and validate Reactive Forms using FormGroup, FormControl, and built-in or custom validators from @angular/forms.
@@ -240,30 +247,29 @@ How do you create and validate reactive forms?
 🔹 2. Create the Form in Component Class
 🔹 3. Bind the Form in the Template
 
-
 How to implement custom validators in Angular?
 =>Basic Custom Validator (Function)
-    ✅ Example: Disallow spaces in a username
-    import { AbstractControl, ValidationErrors } from '@angular/forms';
-    
-    export function noSpaces(control: AbstractControl): ValidationErrors | null {
-      const hasSpace = (control.value || '').includes(' ');
-      return hasSpace ? { noSpaces: true } : null;
-    }
-    ✅ Use in Component:
-    username = new FormControl('', [noSpaces]);
+✅ Example: Disallow spaces in a username
+import { AbstractControl, ValidationErrors } from '@angular/forms';
+
+export function noSpaces(control: AbstractControl): ValidationErrors | null {
+const hasSpace = (control.value || '').includes(' ');
+return hasSpace ? { noSpaces: true } : null ;
+}
+✅ Use in Component:
+username = new FormControl('', [noSpaces]) ;
 
 What is FormGroup, FormControl, and FormArray?
 =>FormControl: represents a single form input element and its value/state.
-  FormGroup: is a collection of FormControls (or other groups/arrays) that allows us to manage a group of related fields together.
-  FormArray:  is a collection of FormControls (or groups) stored in an array, useful when we want a dynamic number of form fields.”
+FormGroup: is a collection of FormControls (or other groups/arrays) that allows us to manage a group of related fields together.
+FormArray: is a collection of FormControls (or groups) stored in an array, useful when we want a dynamic number of form fields.”
 
 How to handle nested forms in Angular?
 
 How do you reset or patch values in a reactive form?
 =>setValue() → updates all form fields, and requires every control to be specified.
-  patchValue() → updates only specific fields, leaving others unchanged.
-  reset() → clears the form, setting values back to initial state (optionally with defaults).”
+patchValue() → updates only specific fields, leaving others unchanged.
+reset() → clears the form, setting values back to initial state (optionally with defaults).”
 
 How to dynamically add/remove form fields?
 =>Explain form array
@@ -273,30 +279,29 @@ How to show form validation errors dynamically?
 ✅ 5. Services and Dependency Injection (8 questions)
 What is a service in Angular?
 =>A service in Angular is a class that contains business logic, reusable code, or data which can be shared across multiple components.
-  It helps keep components lightweight and focused on UI, while services handle data fetching, state management, or utility logic.
-  We usually create services with the @Injectable() decorator and provide them in root or a module, so Angular’s Dependency Injection (DI) system can share the same instance wherever it’s needed.
+It helps keep components lightweight and focused on UI, while services handle data fetching, state management, or utility logic.
+We usually create services with the @Injectable() decorator and provide them in root or a module, so Angular’s Dependency Injection (DI) system can share the same instance wherever it’s needed.
 
 What is dependency injection in Angular?
-=>Dependency Injection is a design pattern where Angular automatically provides required services or objects to a class instead of us creating them manually. This reduces tight coupling, improves    testability, and makes code cleaner. For example, when I inject UserService into a component’s constructor, Angular’s injector creates and provides the instance.
+=>Dependency Injection is a design pattern where Angular automatically provides required services or objects to a class instead of us creating them manually. This reduces tight coupling, improves testability, and makes code cleaner. For example, when I inject UserService into a component’s constructor, Angular’s injector creates and provides the instance.
 
 How do you provide a service in a specific module or component?
 
 What is the use of providedIn: 'root'?
 =>The @Injectable() decorator in Angular allows us to configure where a service should be registered with the Angular Injector.
-  This is controlled by the providedIn property.
-  Options:
-  providedIn:'root'
-      Service is registered in the root injector (AppModule level).
-      Creates a single instance (singleton) shared across the entire app.
-      Most commonly used.
-  providedIn: 'platform'
-      Service is registered in the platform injector.
-      Shared across multiple Angular applications running on the same page.
-  providedIn: 'any'
-      Service is registered in any injector that requests it.
-      A new instance will be created in each lazy-loaded module.
-      Useful for isolating service state per module.
-
+This is controlled by the providedIn property.
+Options:
+providedIn:'root'
+Service is registered in the root injector (AppModule level).
+Creates a single instance (singleton) shared across the entire app.
+Most commonly used.
+providedIn: 'platform'
+Service is registered in the platform injector.
+Shared across multiple Angular applications running on the same page.
+providedIn: 'any'
+Service is registered in any injector that requests it.
+A new instance will be created in each lazy-loaded module.
+Useful for isolating service state per module.
 
 How does hierarchical injection work in Angular?
 
@@ -304,24 +309,22 @@ How to make a singleton service?
 
 What are multi providers in Angular?
 =>By default, when you provide a token (like a service) multiple times, the last one overrides the previous ones.
-  But sometimes we want multiple values for the same injection token — that’s where multi providers come in.
-        @Injectable()
-        export class AuthInterceptor implements HttpInterceptor {
-        intercept(req: HttpRequest<any>, next: HttpHandler) {
-            const cloned = req.clone({ setHeaders: { Authorization: 'Bearer token' } });
-            return next.handle(cloned);
-        }
-        }
+But sometimes we want multiple values for the same injection token — that’s where multi providers come in.
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+intercept(req: HttpRequest<any>, next: HttpHandler) {
+const cloned = req.clone({ setHeaders: { Authorization: 'Bearer token' } }) ;
+return next.handle(cloned) ;
+}
+}
 
-        @Injectable()
-        export class LoggingInterceptor implements HttpInterceptor {
-        intercept(req: HttpRequest<any>, next: HttpHandler) {
-            console.log('Request made:', req.url);
-            return next.handle(req);
-        }
-        }
-
-
+@Injectable()
+export class LoggingInterceptor implements HttpInterceptor {
+intercept(req: HttpRequest<any>, next: HttpHandler) {
+console.log('Request made:', req.url) ;
+return next.handle(req) ;
+}
+}
 
 ✅ 10. Performance Optimization (6 questions)
 What is ChangeDetectionStrategy?OnPush and how does it work?
@@ -330,14 +333,12 @@ By default, Angular uses ChangeDetectionStrategy.Default, which means it runs ch
 
 How does Angular's change detection mechanism work?
 =>Change Detection Flow
-  Event happens (click, HTTP response, timer, etc.)
-  Zone.js notifies Angular
-  Angular runs change detection starting from root
-  Components are checked one by one
-  If a binding value changed → Angular updates the DOM
-  If not changed → Skips DOM update (but still runs checks)
-
-
+Event happens (click, HTTP response, timer, etc.)
+Zone.js notifies Angular
+Angular runs change detection starting from root
+Components are checked one by one
+If a binding value changed → Angular updates the DOM
+If not changed → Skips DOM update (but still runs checks)
 
 ✅ 12. Miscellaneous / Real-world (10 questions)
 How do you secure an Angular app (e.g., JWT, AuthGuard)?
@@ -360,8 +361,6 @@ How do you deploy an Angular app to production?
 
 What challenges have you faced in Angular projects and how did you overcome them?
 
-
-
 Angular developer questions
 -change detation
 -dependency injection
@@ -372,73 +371,67 @@ Angular developer questions
 -concat map vs merge map
 -reply subject
 
-
-
 Subject
 =>No initial value
-  Does NOT store last value
-  use when When you don’t care about past values, only future ones
-            ************eg********************
-            *  const subject = new Subject();
-            *  subject.next(1);
-            *  subject.next(2);
-            *  subject.subscribe(value => console.log("Subscriber:", value)); 
-            *  // Output: (nothing, because 1 & 2 already emitted)
-            *  subject.next(3);
-            *  // Output: Subscriber: 3
+Does NOT store last value
+use when When you don’t care about past values, only future ones
+************eg********************
+* const subject = new Subject() ;
+* subject.next(1) ;
+* subject.next(2) ;
+* subject.subscribe(value => console.log("Subscriber:", value)) ;
+* // Output: (nothing, because 1 & 2 already emitted)
+* subject.next(3) ;
+* // Output: Subscriber: 3
 
 BehaviorSubject
 =>✅ Must have an initial/default value
-  ✅ Always stores the latest value
-  Subscriber immediately receives last emitted value (even if emitted before subscription)
-  use When you need current state + future updates (like form state, logged-in user state, etc.)
-            ****************eg****************
-              const behavior = new BehaviorSubject(0); // initial value: 0
+✅ Always stores the latest value
+Subscriber immediately receives last emitted value (even if emitted before subscription)
+use When you need current state + future updates (like form state, logged-in user state, etc.)
+****************eg****************
+const behavior = new BehaviorSubject(0) ; // initial value: 0
 
-              behavior.next(1);
-              behavior.next(2);
+behavior.next(1) ;
+behavior.next(2) ;
 
-              behavior.subscribe(value => console.log("Subscriber:", value));
-              // Output immediately: 2 (last emitted value)
+behavior.subscribe(value => console.log("Subscriber:", value)) ;
+// Output immediately: 2 (last emitted value)
 
-              behavior.next(3);
-              // Output: 3
+behavior.next(3) ;
+// Output: 3
 
-concatMap vs mergeMap              
+concatMap vs mergeMap
 
-Feature           	concatMap	                          mergeMap
-Order             	Executes one at a time,               sequential	Executes all at once, parallel
-Output Order       	Preserves order                     	Does NOT guarantee order
-Use Case	          API calls in Order                  	API calls in parallel (faster, no dependency)
-Concurrency       	1 at a time                         	Unlimited by default
+Feature 	concatMap	 mergeMap
+Order 	Executes one at a time, sequential	Executes all at once, parallel
+Output Order 	Preserves order 	Does NOT guarantee order
+Use Case	 API calls in Order 	API calls in parallel (faster, no dependency)
+Concurrency 	1 at a time 	Unlimited by default
 
 With concatMap
-    ➡ A starts → A finishes
-    ➡ B starts → B finishes
-    ➡ C starts → C finishes
-    ✅ Ordered, but slower
+➡ A starts → A finishes
+➡ B starts → B finishes
+➡ C starts → C finishes
+✅ Ordered, but slower
 
-    from([1, 2, 3]).pipe(
-      concatMap(id => apiCall(id))
-    )
+from([1, 2, 3]).pipe(
+concatMap(id => apiCall(id))
+)
 
 With mergeMap
-    ➡ A, B, C start at the same time
-    ➡ Whichever finishes first is emitted first
-    ✅ Faster, unordered
+➡ A, B, C start at the same time
+➡ Whichever finishes first is emitted first
+✅ Faster, unordered
 
-    from([1, 2, 3]).pipe(
-      mergeMap(id => apiCall(id))
-    )
-
-
+from([1, 2, 3]).pipe(
+mergeMap(id => apiCall(id))
+)
 
 When to Use What?
-Situation	                                                           Use
-Button clicks, event streams                                        Subject
-App state, current user, selected item	                            BehaviorSubject
-Chat messages, notifications history, caching API data            	ReplaySubject
-API calls that must run in order	                                  concatMap
-API calls that can run in parallel                                	mergeMap
-
-
+Situation	 Use
+Button clicks, event streams Subject
+App state, current user, selected item	 BehaviorSubject
+Chat messages, notifications history, caching API data 	ReplaySubject
+API calls that must run in order	 concatMap
+API calls that can run in parallel 	mergeMap
