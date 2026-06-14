@@ -36,3 +36,20 @@ Prototype chain
 What is inheritance in JS?
 Class vs prototype-based inheritance
 __proto__ vs prototype
+
+
+
+
+input output question
+console.log("5" + 2);  //52
+console.log("5" - 2);  //3
+console.log("5" * 2);  //10
+console.log("10" / 2); //5
+console.log("5" + true); //5true
+console.log("5" - true); //4
+console.log("5" - true); //5null
+console.log("5" - null); //5  because Number(null) convert it to 0
+console.log("5" + undefined); //5undefined
+console.log("5" - undefined); //NaN
+console.log(true + true); //2
+console.log(true + false); //1
