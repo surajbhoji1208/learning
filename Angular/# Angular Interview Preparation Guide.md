@@ -592,14 +592,14 @@ users.update(list => [...list, newUser]); // create new array
 **Advanced Question:** When would you use Signals vs RxJS Observables?
 
 **Answer:**
-| Aspect | Signals | RxJS Observables |
-|---|---|---|
-| Synchronous | Always synchronous | Can be async |
-| Template usage | `{{ count() }}` | `{{ count$ \| async }}` |
-| Complexity | Simple | Powerful for complex streams |
-| HTTP/WebSockets | Not designed for it | Perfect |
-| Local UI state | Excellent | Overkill |
-| Derived state | `computed()` | `combineLatest`, `map` |
+| Aspect             | Signals               | RxJS Observables        |
+|--------------------|-----------------------|-------------------------|
+| Synchronous        | Always synchronous    | Can be async            |
+| Template usage     | `{{ count() }}`       | `{{ count$ \| async }}` |
+| Complexity         | Simple                | Powerful for complex streams |
+| HTTP/WebSockets    | Not designed for it   | Perfect                 |
+| Local UI state     | Excellent             | Overkill                |
+| Derived state      | `computed()`          | `combineLatest`, `map`  |
 
 **Rule of thumb:** Use Signals for local component state and derived UI state. Use RxJS for async streams, HTTP, WebSockets, and complex event transformations. Use `toSignal()` and `toObservable()` to bridge the two.
 
@@ -1798,13 +1798,13 @@ setTimeout(() => subscription.unsubscribe(), 10000);
 ```
 
 **Key difference from Promises:**
-| Feature | Observable | Promise |
-|---|---|---|
-| Lazy | Yes — doesn't run until subscribed | No — runs immediately |
-| Multiple values | Yes | No (single resolve) |
-| Cancellable | Yes (unsubscribe) | No |
-| Synchronous possible | Yes | No |
-| Operators | Extensive | Limited (.then, .catch) |
+| Feature              | Observable                          | Promise         |
+|----------------------|-------------------------------------|-----------------|
+| Lazy                 | Yes — doesn't run until subscribed  | No — runs immediately |
+| Multiple values      | Yes                                 | No (single resolve) |
+| Cancellable          | Yes (unsubscribe)                   | No              |
+| Synchronous possible | Yes                                 | No              |
+| Operators            | Extensive                           | Limited (.then, .catch) |
 
 ---
 
@@ -1848,12 +1848,12 @@ async$.complete(); // NOW emits 3 (last value only)
 ```
 
 **When to use which:**
-| Subject | Use Case |
-|---|---|
-| Subject | Events/notifications, no initial state needed |
-| BehaviorSubject | Current state (user, auth, config), requires initial value |
-| ReplaySubject | Caching recent events, late join to stream |
-| AsyncSubject | Single value from async operation (rarely needed, use Promises) |
+| Subject          | Use Case                                   |
+|------------------|--------------------------------------------|
+| Subject          | Events/notifications, no initial state needed |
+| BehaviorSubject  | Current state (user, auth, config), requires initial value |
+| ReplaySubject    | Caching recent events, late join to stream |
+| AsyncSubject     | Single value from async operation (rarely needed, use Promises) |
 
 ---
 
