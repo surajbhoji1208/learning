@@ -128,7 +128,8 @@ What is readonly property?
 ANS: This property can be set once (when the object is created) but cannot be reassigned later.
 
 How do you implement a class with an interface?
-ANS:  -Class get extends and interface get implement
+ANS:  -A class extends another class.
+      -A class implements an interface.
       -interface get extends with interface  
 
                 interface Animal {
