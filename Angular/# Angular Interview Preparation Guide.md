@@ -5182,174 +5182,23 @@ export const premiumGuard: CanActivateFn = () => {
 
 ---
 
-**63.** How do you test a component that uses async pipe?
-
-**Answer:**
-```typescript
-it('should display users from observable', fakeAsync(() => {
-  const mockUsers = [{ id: 1, name: 'Alice' }];
-  const users$ = of(mockUsers);
-  component.users$ = users$;
-  fixture.detectChanges();
-  tick(); // resolve async operations
-  fixture.detectChanges();
-  expect(fixture.nativeElement.querySelectorAll('app-user-card').length).toBe(1);
-}));
 ```
 
 ---
 
-**64.** How do you test a component with OnPush change detection?
+---
 
-**Answer:**
-```typescript
-it('should update when input changes', () => {
-  component.user = { id: 2, name: 'Bob' }; // change input
-  fixture.detectChanges(); // OnPush — must manually trigger
-  expect(fixture.nativeElement.querySelector('h2').textContent).toContain('Bob');
-});
-```
 
 ---
 
-**65.** How do you write a test for an HTTP interceptor?
-
-**Answer:**
-```typescript
-describe('AuthInterceptor', () => {
-  it('should add Authorization header', () => {
-    const authService = { getToken: () => 'test-token' };
-    TestBed.configureTestingModule({
-      providers: [
-        provideHttpClient(withInterceptors([authInterceptor])),
-        provideHttpClientTesting(),
-        { provide: AuthService, useValue: authService }
-      ]
-    });
-    const http = TestBed.inject(HttpClient);
-    const httpMock = TestBed.inject(HttpTestingController);
-
-    http.get('/api/data').subscribe();
-    const req = httpMock.expectOne('/api/data');
-    expect(req.request.headers.get('Authorization')).toBe('Bearer test-token');
-    req.flush({});
-  });
-});
-```
 
 ---
 
-**66.** A form validator makes an HTTP call. How do you test it?
-
-**Answer:**
-```typescript
-it('should validate email uniqueness', fakeAsync(() => {
-  const userService = { checkEmail: jasmine.createSpy().and.returnValue(of(true)) };
-  const control = new FormControl('taken@email.com', [], [uniqueEmailValidator(userService as any)]);
-
-  tick(400); // debounce
-  fixture.detectChanges();
-  expect(control.errors?.['emailTaken']).toBeTrue();
-}));
-```
 
 ---
 
-**67.** How do you test NgRx effects?
-
-**Answer:**
-```typescript
-describe('UsersEffects', () => {
-  let actions$: Observable<any>;
-  let effects: UsersEffects;
-  let userService: jasmine.SpyObj<UserService>;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        UsersEffects,
-        provideMockActions(() => actions$),
-        { provide: UserService, useValue: jasmine.createSpyObj('UserService', ['getUsers']) }
-      ]
-    });
-    effects = TestBed.inject(UsersEffects);
-    userService = TestBed.inject(UserService) as any;
-  });
-
-  it('should dispatch loadUsersSuccess on success', () => {
-    const users = [{ id: 1, name: 'Alice' }];
-    userService.getUsers.and.returnValue(of(users));
-    actions$ = hot('-a', { a: loadUsers() });
-    const expected = cold('-b', { b: loadUsersSuccess({ users }) });
-    expect(effects.loadUsers$).toBeObservable(expected);
-  });
-});
-```
-
 ---
 
-**68.** How do you test a pipe?
-
-**Answer:**
-```typescript
-describe('TruncatePipe', () => {
-  const pipe = new TruncatePipe();
-
-  it('should truncate long strings', () => {
-    expect(pipe.transform('Hello World Angular', 10)).toBe('Hello Worl...');
-  });
-
-  it('should not truncate short strings', () => {
-    expect(pipe.transform('Short', 10)).toBe('Short');
-  });
-
-  it('should handle null/undefined', () => {
-    expect(pipe.transform(null as any, 10)).toBe('');
-  });
-});
-```
-
----
-
-**69.** How would you implement e2e tests for an Angular login flow?
-
-**Answer:**
-```typescript
-// Using Playwright or Cypress
-test('user can log in', async ({ page }) => {
-  await page.goto('/login');
-  await page.fill('[data-testid="email"]', 'user@test.com');
-  await page.fill('[data-testid="password"]', 'password123');
-  await page.click('[data-testid="login-btn"]');
-  await expect(page).toHaveURL('/dashboard');
-  await expect(page.locator('h1')).toContainText('Welcome');
-});
-```
-
----
-
-**70.** How do you handle testing with timers (setTimeout, setInterval)?
-
-**Answer:**
-```typescript
-// Use fakeAsync + tick
-it('should debounce search', fakeAsync(() => {
-  component.searchInput = 'angular';
-  fixture.detectChanges();
-
-  tick(300); // fast-forward 300ms
-  expect(component.searchResults.length).toBeGreaterThan(0);
-}));
-
-// Or use jasmine.clock()
-it('should show loading after delay', () => {
-  jasmine.clock().install();
-  component.startOperation();
-  jasmine.clock().tick(1000);
-  expect(component.isLoading).toBeTrue();
-  jasmine.clock().uninstall();
-});
-```
 
 ---
 
@@ -5526,42 +5375,6 @@ export class UserService {
 
 ---
 
-**79.** How would you build an A/B testing framework in Angular?
-
-**Answer:**
-```typescript
-@Injectable({ providedIn: 'root' })
-export class ABTestService {
-  private assignments = new Map<string, string>();
-
-  getVariant(testName: string): string {
-    if (!this.assignments.has(testName)) {
-      const variant = Math.random() < 0.5 ? 'A' : 'B';
-      this.assignments.set(testName, variant);
-      this.analytics.track('ab_assignment', { testName, variant });
-    }
-    return this.assignments.get(testName)!;
-  }
-}
-
-@Directive({ selector: '[abTest]', standalone: true })
-export class AbTestDirective implements OnInit {
-  @Input() abTest!: string;
-  @Input() abVariant!: 'A' | 'B';
-
-  ngOnInit(): void {
-    if (this.abTestService.getVariant(this.abTest) !== this.abVariant) {
-      this.viewContainer.clear();
-    } else {
-      this.viewContainer.createEmbeddedView(this.templateRef);
-    }
-  }
-}
-
-// Usage
-// <div *abTest="'header-cta'; variant: 'A'"><button>Sign Up Free</button></div>
-// <div *abTest="'header-cta'; variant: 'B'"><button>Get Started</button></div>
-```
 
 ---
 
@@ -5578,45 +5391,8 @@ export class AbTestDirective implements OnInit {
 
 **81–90: Architecture Deep Dives**
 
-**81.** How would you architect a large Angular application for a team of 10 developers?
-
-**Answer:**
-- **Monorepo with Nx** for managing multiple apps/libs
-- **Feature-based folder structure**: `features/auth`, `features/dashboard`, etc.
-- **Core module/service layer**: authentication, logging, error handling
-- **Shared component library**: design system components
-- **Strict module/standalone boundaries**: each feature is independently deployable chunk
-- **NgRx for global state**, services for local state
-- **Signals for UI state in Angular 16+**
-- **Path aliases** (`@core`, `@shared`, `@features`) in tsconfig
-
 ---
 
-**82.** How would you implement an event bus in Angular?
-
-**Answer:**
-```typescript
-type EventMap = {
-  'user:login': User;
-  'user:logout': void;
-  'cart:updated': CartItem[];
-};
-
-@Injectable({ providedIn: 'root' })
-export class EventBusService {
-  private subjects = new Map<keyof EventMap, Subject<any>>();
-
-  emit<K extends keyof EventMap>(event: K, data: EventMap[K]): void {
-    if (!this.subjects.has(event)) this.subjects.set(event, new Subject());
-    this.subjects.get(event)!.next(data);
-  }
-
-  on<K extends keyof EventMap>(event: K): Observable<EventMap[K]> {
-    if (!this.subjects.has(event)) this.subjects.set(event, new Subject());
-    return this.subjects.get(event)!.asObservable();
-  }
-}
-```
 
 ---
 
@@ -5696,13 +5472,6 @@ ngOnInit(): void {
 
 ---
 
-**86.** How do you implement deep linking in an Angular SPA?
-
-**Answer:**
-Deep linking works automatically with Angular Router when the server is configured to serve `index.html` for all routes.
-- In development: Angular CLI dev server handles this
-- In production: Configure Nginx/Apache to fallback to `index.html`
-- For hash-based: Use `useHash: true` in router config (no server config needed)
 
 ---
 
@@ -5767,55 +5536,14 @@ export class DropZoneDirective {
 
 ---
 
-**90.** What is the Angular ecosystem outside the framework itself?
-
-**Answer:**
-- **NgRx** — state management
-- **Angular Material** — UI component library
-- **Angular CDK** — component development kit
-- **Nx** — monorepo tooling
-- **ngx-translate** — i18n
-- **Angular Universal (SSR)** — server-side rendering
-- **Ionic** — mobile apps with Angular
-- **NativeScript** — native mobile apps
-- **Storybook** — component development
-- **Cypress/Playwright** — e2e testing
 
 ---
 
 **91–100: Final Advanced Questions**
 
-**91.** How does Angular handle server-side rendering with dynamic content?
 
-**Answer:** Angular Universal renders the component tree server-side, serializes the state using `TransferState`, and sends it to the client. The client uses `provideClientHydration()` to attach to the existing DOM without re-rendering, and restores the transferred state to avoid duplicate API calls.
 
 ---
-
-**92.** What is `TransferState` and why is it important for SSR?
-
-**Answer:**
-```typescript
-import { TransferState, makeStateKey } from '@angular/core';
-
-const USERS_KEY = makeStateKey<User[]>('users');
-
-@Injectable()
-export class UserService {
-  constructor(private http: HttpClient, private transfer: TransferState) {}
-
-  getUsers(): Observable<User[]> {
-    if (this.transfer.hasKey(USERS_KEY)) {
-      const users = this.transfer.get(USERS_KEY, []);
-      this.transfer.remove(USERS_KEY);
-      return of(users); // use server-fetched data, no HTTP call
-    }
-
-    return this.http.get<User[]>('/api/users').pipe(
-      tap(users => this.transfer.set(USERS_KEY, users)) // store for client
-    );
-  }
-}
-```
 
 ---
 
@@ -5851,6 +5579,7 @@ export class DashboardComponent {
 **95.** How do you use `@let` in Angular 18 templates?
 
 **Answer:**
+@let is a new template syntax introduced in Angular 18 that lets you create a local variable inside a template. Its main purpose is to avoid repeating the same expression multiple times, making templates cleaner, easier to read, and sometimes more efficient.
 ```html
 <!-- Angular 18: @let for template variables -->
 @let user = userSignal();
